@@ -1,0 +1,27 @@
+{
+  "name": "workshop-cypress",
+  "version": "1.0.0",
+  "description": "This is a Workshop about Cypress",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leonleo997/workshop-cypress.git"
+  },
+  "keywords": [
+    "ui-tesing",
+    "cypress",
+    "workshop"
+  ],
+  "author": "Software Developer Engineer in Test <aperdomobo@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leonleo997/workshop-cypress/issues"
+  },
+  "homepage": "https://github.com/leonleo997/workshop-cypress#readme",
+  "devDependencies": {
+    "cypress": "^4.0.0"
+  }
+}
