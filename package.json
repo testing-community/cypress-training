@@ -1,5 +1,5 @@
 {
-  "name": "workshop-cypress",
+  "name": "cypress-training",
   "version": "1.0.0",
   "description": "This is a Workshop about Cypress",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leonleo997/workshop-cypress.git"
+    "url": "git+https://github.com/AgileTestingColombia/cypress-training.git"
   },
   "keywords": [
     "ui-tesing",
@@ -18,9 +18,9 @@
   "author": "Software Developer Engineer in Test <ylopezs@psl.com.co>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/leonleo997/workshop-cypress/issues"
+    "url": "https://github.com/AgileTestingColombia/cypress-training/issues"
   },
-  "homepage": "https://github.com/leonleo997/workshop-cypress#readme",
+  "homepage": "https://github.com/AgileTestingColombia/cypress-training#readme",
   "devDependencies": {
     "cypress": "^4.0.0"
   }
