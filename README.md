@@ -60,6 +60,6 @@ describe('This is my first cypress test', () => {
     });
 });
 ```
-Una vez corremos la prueba ejecutamos de nuevo `npm test` y ejecutamos la prueba. Si todo está bien vemos que la prueba pasará en verde:
-![google spec result](https://github.com/AgileTestingColombia/cypress-training/resources/images/google-spec.png)
+Una vez corremos la prueba ejecutamos de nuevo `npm test` y ejecutamos la prueba. Si todo está bien vemos que la prueba pasará en verde:  
+![google spec result](https://github.com/AgileTestingColombia/cypress-training/blob/setup/resources/google-spec.png).
 
