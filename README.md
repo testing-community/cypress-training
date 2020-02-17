@@ -1,10 +1,61 @@
 # Workshop Cypress
-## 1. Configuración e instalación
+## 1. Creación y configuración del proyecto
+Para iniciar vamos a crear un repositorio en Github y un proyecto usando NodeJS:
+1. Crear en Github un repositorio con el nombre de **cypress-training**. Para esto debe tener una cuenta en la platafoma.
+2. Crear localmente una carpeta con el nombre de **cypress-training** y nos movemos dentro de la carpeta.
+2. Seguir las siguientes instrucciones: 
+```bash
+echo "# cypress-training" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/<usuario>/cypress-training.git
+git push -u origin master
+```
+3. Ir a Settings > Branches adicionamos una regla dando click en **add rule**. Escribimos `master` en el campo de **branch name pattern**. Una vez hecho eso, damos click en las siguientes opciones:
+![branch rules](https://github.com/AgileTestingColombia/cypress-training/blob/media/images/brach-rules.png).
+4. Añadimos como colaboradores a:
+* [leonleo997](https://github.com/leonleo997)
+* [renardete](https://github.com/renardete)
+* [jcruze](https://github.com/jcruze)
+5. Instalamos la versión `v10.15.3` de NodeJS. Nota: Recomendamos usar [nvm](https://github.com/nvm-sh/nvm) como manejador de versiones.
+6. Ejecutar en consola `git checkout setup`.
+1. Crear una carpeta en la raíz del proyecto llamada **.github** con un archivo llamado **CODEOWNERS** (sin extensión) con lo siguiente:
+```js
+* @leonleo997 @renardete @jcruze
+```
+8. Ejecutar en consola `npm init` y colocar la siguiente información:
+
+   | Parametro          | Valor                                         |
+   | ------------------ | ----------                                    |
+   | **Name**           | cypress-training                              |
+   | **Version**        | _[Por Defecto]_                               |
+   | **Description**    | This is a Workshop about Cypress              |
+   | **Entry Point**    | _[Por Defecto]_                               |
+   | **Test Command**   | `cypress open`                                |
+   | **Git Repository** | _[Por Defecto]_                               |
+   | **Keywords**       | ui-testing, dojo, practice, cypress           |
+   | **Author**         | _[Su nombre]_ <_[Su correo]_> (_[su github]_) |
+   | **License**        | MIT                                           |
+1. Realizar un commit donde incluya los archivos creados con el mensaje “setup project configuration” y subir los cambios al repositorio:
+
+    ```bash
+    git add .
+    git commit -m "setup project configuration"
+    git push origin setup
+    ```
+
+1. Crear un PR, asignarle los revisores y esperar por la aprobación o comentarios de los revisores. Si no sabe como realizarlo siga las siguientes [instrucciones](https://help.github.com/articles/creating-a-pull-request/).
+1. Una vez aprobado realizar el merge a master seleccionando la opción “squash and merge”.
+
+**Consideraciones importantes:** Se espera que por cada punto usted cree una rama donde su nombre tenga relación con lo que usted hace en el punto, y que cree un Pull Request que tenga como revisores a los contribuidores. Finalmente, una vez su PR esté probado, haga merge usango la opción “squash and merge”.
+
+## 2. Instalación de Cypress
 Primero, vamos a instalar Cypress:
 ```
 npm install -D cypress  
 ````
-Veremos que se crea una carpeta llamada `cypress` que tiene la siguiente [estructura](https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests.html#Folder-Structure):
+Veremos que se crea una carpeta llamada **cypress** que tiene la siguiente [estructura](https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests.html#Folder-Structure):
 ```
 /cypress
   /fixtures
@@ -49,7 +100,7 @@ Una vez lo tenemos instalado, pasamos a ejecutar los ejemplos. Para esto, añadi
 ```
 Después, damos click en el botón `Run all specs` para ejecutar todas las pruebas. Es aquí donde vemos cómo funciona la magia del de cypress en frente de nuestros ojos. Una vez termine cerramos la ventana de cypress.
 
-## 2. Creando la primera prueba
+## 3. Creando la primera prueba
 Una vez hemos ejecutado las pruebas de ejemplo con los que viene `Cypress`, eliminamos la carpeta `examples` que está dentro de la carpeta de `integration`.  
 Creamos un archivo llamado `google.spec.js` dentro de la carpeta `/cypress/integration/` con el siguiente contenido:  
 ```javascript
