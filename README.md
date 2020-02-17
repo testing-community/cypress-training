@@ -13,7 +13,7 @@ git remote add origin https://github.com/<usuario>/cypress-training.git
 git push -u origin master
 ```
 3. Ir a Settings > Branches adicionamos una regla dando click en **add rule**. Escribimos `master` en el campo de **branch name pattern**. Una vez hecho eso, damos click en las siguientes opciones:
-![branch rules](https://github.com/AgileTestingColombia/cypress-training/blob/media/images/brach-rules.png).
+![branch rules](https://github.com/AgileTestingColombia/cypress-training/blob/media/images/branch-rules.png).
 4. Añadimos como colaboradores a:
 * [leonleo997](https://github.com/leonleo997)
 * [renardete](https://github.com/renardete)
