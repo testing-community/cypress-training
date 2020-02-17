@@ -2,6 +2,13 @@
 ## 1. Creación y configuración del proyecto
 Para iniciar vamos a crear un repositorio en Github y un proyecto usando NodeJS:
 1. Crear en Github un repositorio con el nombre de **cypress-training**. Para esto debe tener una cuenta en la platafoma.
+2. Crear el archivo **.gitignore** en la raíz del proyecto. Ingresar a la página <https://www.gitignore.io/> y en el área de texto  agregar el _sistema operativo_, _IDE's_ y _NodeJS_, ejemplo _OSX Node VisualStudioCode_. Genere el archivo y cópielo dentro del archivo **.gitignore**. Ademas agregue las siguientes lineas para no subir videos ni capturas de ejecución de las pruebas.
+  ```
+  ...
+  cypress/videos
+  cypress/screenshots
+  ...
+  ```
 2. Crear localmente una carpeta con el nombre de **cypress-training** y nos movemos dentro de la carpeta.
 2. A continuación vamos a seguir las siguientes instrucciones para realizar el primer commit y subir los cambios a nuestro repositorio remoto en github: 
 ```bash
@@ -12,7 +19,7 @@ git commit -m "first commit"
 git remote add origin https://github.com/<usuario>/cypress-training.git
 git push -u origin master
 ```
-3. Vamos a proteger la rama master para que los Pull Request requieran revision de otros desarrolladores y comprobación del estado (Nuestros tests estan Ok :heavy_check_mark: o Fallaron :x: ) de nuestra aplicación antes de hacer un merge a la rama.Ir a Settings > Branches adicionamos una regla dando click en **add rule**. Escribimos `master` en el campo de **branch name pattern**. Una vez hecho eso, damos click en las siguientes opciones:
+3. Vamos a proteger la rama master para que los Pull Request requieran revision de otros desarrolladores y comprobación del estado (Nuestros tests estan Ok :heavy_check_mark: o Fallaron :x: ) de nuestra aplicación antes de hacer un merge a la rama. Ir a Settings > Branches adicionamos una regla dando click en **add rule**. Escribimos `master` en el campo de **branch name pattern**. Una vez hecho eso, damos click en las siguientes opciones:
 ![branch rules](https://github.com/AgileTestingColombia/cypress-training/blob/media/images/branch-rules.png).
 4. Añadimos como colaboradores a:
 * [leonleo997](https://github.com/leonleo997)
