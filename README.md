@@ -3,7 +3,7 @@
 Para iniciar vamos a crear un repositorio en Github y un proyecto usando NodeJS:
 1. Crear en Github un repositorio con el nombre de **cypress-training**. Para esto debe tener una cuenta en la platafoma.
 2. Crear localmente una carpeta con el nombre de **cypress-training** y nos movemos dentro de la carpeta.
-2. Seguir las siguientes instrucciones: 
+2. A continuación vamos a seguir las siguientes instrucciones para realizar el primer commit y subir los cambios a nuestro repositorio remoto en github: 
 ```bash
 echo "# cypress-training" >> README.md
 git init
@@ -12,14 +12,14 @@ git commit -m "first commit"
 git remote add origin https://github.com/<usuario>/cypress-training.git
 git push -u origin master
 ```
-3. Ir a Settings > Branches adicionamos una regla dando click en **add rule**. Escribimos `master` en el campo de **branch name pattern**. Una vez hecho eso, damos click en las siguientes opciones:
+3. Vamos a proteger la rama master para que los Pull Request requieran revision de otros desarrolladores y comprobación del estado (Nuestros tests estan Ok :heavy_check_mark: o Fallaron :x: ) de nuestra aplicación antes de hacer un merge a la rama.Ir a Settings > Branches adicionamos una regla dando click en **add rule**. Escribimos `master` en el campo de **branch name pattern**. Una vez hecho eso, damos click en las siguientes opciones:
 ![branch rules](https://github.com/AgileTestingColombia/cypress-training/blob/media/images/branch-rules.png).
 4. Añadimos como colaboradores a:
 * [leonleo997](https://github.com/leonleo997)
 * [renardete](https://github.com/renardete)
 * [jcruze](https://github.com/jcruze)
 5. Instalamos la versión `v10.15.3` de NodeJS. Nota: Recomendamos usar [nvm](https://github.com/nvm-sh/nvm) como manejador de versiones.
-6. Ejecutar en consola `git checkout setup`.
+6. Creamos una nueva rama local por ejecuntando en la consola `git checkout -b setup`.
 1. Crear una carpeta en la raíz del proyecto llamada **.github** con un archivo llamado **CODEOWNERS** (sin extensión) con lo siguiente:
 ```js
 * @leonleo997 @renardete @jcruze
@@ -45,8 +45,12 @@ git push -u origin master
     git push origin setup
     ```
 
-1. Crear un PR, asignarle los revisores y esperar por la aprobación o comentarios de los revisores. Si no sabe como realizarlo siga las siguientes [instrucciones](https://help.github.com/articles/creating-a-pull-request/).
-1. Una vez aprobado realizar el merge a master seleccionando la opción “squash and merge”.
+1. Crear un PR, asignarle los revisores y esperar por la aprobación o comentarios de los revisores. Si no sabe como realizarlo en el siguiente articulo puedes encontrar las instrucciones para realizar un Pull Request(PR) [instrucciones](https://help.github.com/articles/creating-a-pull-request/).
+1. Una vez aprobado realizar el merge a master seleccionando la opción “squash and merge”. Posteriormente, volver a la rama master local y traer los cambios mergeados en el PR.
+    ```bash
+    git checkout master
+    git pull
+    ```
 
 **Consideraciones importantes:** Se espera que por cada punto usted cree una rama donde su nombre tenga relación con lo que usted hace en el punto, y que cree un Pull Request que tenga como revisores a los contribuidores. Finalmente, una vez su PR esté probado, haga merge usango la opción “squash and merge”.
 
