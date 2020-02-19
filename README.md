@@ -125,3 +125,11 @@ describe('This is my first cypress test', () => {
 2. Una vez corremos la prueba ejecutamos de nuevo `npm test` y ejecutamos la prueba. Si todo está bien vemos que la prueba pasará en verde:  
 ![google spec result](https://github.com/AgileTestingColombia/cypress-training/blob/media/images/google-spec.png).
 
+
+### 4. Configurando las pruebas con Typescript
+1. Instalar las dependencias necesarias
+  ```bash
+  npm i -D webpack @cypress/webpack-preprocessor ts-loader typescript
+  ```
+2. 
+
