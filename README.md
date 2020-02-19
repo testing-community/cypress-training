@@ -124,8 +124,6 @@ describe('This is my first cypress test', () => {
 ![google spec result](https://github.com/AgileTestingColombia/cypress-training/blob/media/images/google-spec.png).
 
 
-
-
 ### 4. Configurando las pruebas con Typescript
 1. Instalar las dependencias necesarias 
   ```bash
@@ -178,7 +176,25 @@ module.exports = {
     },
   }
 ```
-4. Cambiar la extensión de nuestra prueba "google.spec.js" por "google.spec.ts", se ejecuta el comando para correr las pruebas y validamos que corra.
+4. Para cargar el plugin en cypress, agregamos las siguientes lineas en el archivo 'cypress/plugins/index.js'
+```javascript
+/// <reference types="cypress" />
+
+const wp = require('@cypress/webpack-preprocessor')
+
+/**
+ * @type {Cypress.PluginConfig}
+ */
+module.exports = (on, config) => {
+  const options = {
+    webpackOptions: require('../../webpack.config'),
+  }
+
+  on('file:preprocessor', wp(options))
+}
+```
+
+5. Cambiar la extensión de nuestra prueba "google.spec.js" por "google.spec.ts", se ejecuta el comando para correr las pruebas y validamos que corra.
 ```bash
 npm test
 ```
