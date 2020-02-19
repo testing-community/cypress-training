@@ -1,16 +1,15 @@
 # Workshop Cypress
 ## 1. Creación y configuración del proyecto
-Para iniciar vamos a crear un repositorio en Github y un proyecto usando NodeJS:
-1. Crear en Github un repositorio con el nombre de **cypress-training**. Para esto debe tener una cuenta en la platafoma.
-2. Crear el archivo **.gitignore** en la raíz del proyecto. Ingresar a la página <https://www.gitignore.io/> y en el área de texto  agregar el _sistema operativo_, _IDE's_ y _NodeJS_, ejemplo _OSX Node VisualStudioCode_. Genere el archivo y cópielo dentro del archivo **.gitignore**. Ademas agregue las siguientes lineas para no subir videos ni capturas de ejecución de las pruebas.
+1. Crear un repositorio en github con el nombre de **cypress-training** (previo requisito disponer de una cuenta en github).
+2. Crear el archivo **.gitignore** en la raíz del proyecto, luego ingrese a la página <https://www.gitignore.io/> y en el campo de texto digite su sistema operativo (ej: windows, osx, macos) y selecciónelo de la lista de autocompletar. Repita este paso para su entorno de desarrollo (ej:visualstudio, sublime, intellij, jetbrains), también agregue la palabra `node`. Presione el botón "Generate" para crear el archivo que contendrá una lista de carpetas y archivos de exclusión y copie su contenido dentro del archivo **.gitignore**. Por último, agregue al final de su archivo .gitignore las siguientes líneas para no subir los videos y capturas generadas en la ejecución de las pruebas:
   ```
   ...
   cypress/videos
   cypress/screenshots
   ...
   ```
-2. Crear localmente una carpeta con el nombre de **cypress-training** y nos movemos dentro de la carpeta.
-2. A continuación para realizar el primer commit y subir los cambios a nuestro repositorio remoto en github: 
+3. Crear localmente una carpeta con el nombre de **cypress-training** y luego sitúese dentro de la carpeta.
+4. A continuación realice el primer commit y suba los cambios a nuestro repositorio remoto de github: 
 ```bash
 echo "# cypress-training" >> README.md
 git init
@@ -19,21 +18,22 @@ git commit -m "first commit"
 git remote add origin https://github.com/<usuario>/cypress-training.git
 git push -u origin master
 ```
-3. Vamos a proteger la rama master para que los Pull Request requieran revision de otros desarrolladores y comprobación del estado (Nuestros tests estan Ok :heavy_check_mark: o Fallaron :x: ) de nuestra aplicación antes de hacer un merge a la rama. Ir a Settings > Branches adicionamos una regla dando click en **add rule**. Escribimos `master` en el campo de **branch name pattern**. Una vez hecho eso, damos click en las siguientes opciones:
+5. Proteger la rama `master` para que los pull request requieran revisión de otros desarrolladores y se compruebe el estado de nuestros test ("ok" :heavy_check_mark: o "fallaron" :x:) antes de hacer un merge a la rama. 
+Ir a Settings > Branches adicionamos una regla dando click en **add rule**. Escribimos `master` en el campo de **branch name pattern**. Una vez hecho eso, damos click en las siguientes opciones:
 ![branch rules](https://github.com/AgileTestingColombia/cypress-training/blob/media/images/branch-rules.png).
-4. Añadimos como colaboradores a:
+6. Añadir como colaboradores a:
 * [leonleo997](https://github.com/leonleo997)
 * [renardete](https://github.com/renardete)
 * [jcruze](https://github.com/jcruze)
-5. Instalamos la versión `v10.15.3` de NodeJS. Nota: Recomendamos usar [nvm](https://github.com/nvm-sh/nvm) como manejador de versiones.
-6. Creamos una nueva rama local ejecuntando por consola `git checkout -b setup`.
-1. Crear una carpeta en la raíz del proyecto llamada **.github** con un archivo llamado **CODEOWNERS** (sin extensión) con lo siguiente:
+7. Instalar la versión `v10.15.3` de NodeJS. Nota: Recomendamos usar [nvm](https://github.com/nvm-sh/nvm) como manejador de versiones.
+8. Crear una nueva rama local ejecutando por consola `git checkout -b setup`.
+9. Crear una carpeta en la raíz del proyecto llamada **.github** con un archivo llamado **CODEOWNERS** (sin extensión) con lo siguiente:
 ```js
 * @leonleo997 @renardete @jcruze
 ```
-8. Ejecutar en consola `npm init` y colocar la siguiente información:
+10. Ejecutar en consola `npm init` y colocar la siguiente información:
 
-   | Parametro          | Valor                                         |
+   | Parámetro          | Valor                                         |
    | ------------------ | ----------                                    |
    | **Name**           | cypress-training                              |
    | **Version**        | _[Por Defecto]_                               |
@@ -44,7 +44,7 @@ git push -u origin master
    | **Keywords**       | ui-testing, dojo, practice, cypress           |
    | **Author**         | _[Su nombre]_ <_[Su correo]_> (_[su github]_) |
    | **License**        | MIT                                           |
-1. Realizar un commit donde incluya los archivos creados con el mensaje “setup project configuration” y subir los cambios al repositorio:
+11. Realizar un commit donde incluya los archivos creados con el mensaje “setup project configuration” y subir los cambios al repositorio:
 
     ```bash
     git add .
@@ -52,21 +52,19 @@ git push -u origin master
     git push origin setup
     ```
 
-1. Crear un PR, asignarle los revisores y esperar por la aprobación o comentarios de los revisores. Si no sabe como realizarlo en el siguiente articulo puedes encontrar las instrucciones para crearun Pull Request(PR) [instrucciones](https://help.github.com/articles/creating-a-pull-request/).
-1. Una vez aprobado realizar el merge a master seleccionando la opción “squash and merge”. Posteriormente, volver a la rama master local y traer los cambios mergeados en el PR.
+12. Crear un pull request (PR), asignarle los revisores y esperar la aprobación o comentarios de mejora (en este caso deberá hacer los ajustes requeridos, subir los cambios y esperar nuevamente la aprobación) de los revisores . Si no sabe cómo realizarlo, le recomendamos leer el siguiente artículo [instrucciones](https://help.github.com/articles/creating-a-pull-request/).
+13. Una vez hemos obtenido la aprobación de los revisores, realizar el merge a master seleccionando la opción “squash and merge” (squash te permite unir todos los commits en un solo, es más por un concepto de organización). Posteriormente, en su rama local 'master' realice el pull para traer los cambios mergeados en el PR.
     ```bash
     git checkout master
     git pull
     ```
 
-**Consideraciones importantes:** Se espera que por cada punto usted cree una rama donde su nombre tenga relación con lo que usted hace en el punto, y que cree un Pull Request que tenga como revisores a los contribuidores. Finalmente, una vez su PR esté probado, haga merge usango la opción “squash and merge”.
-
 ## 2. Instalación de Cypress
-1. Primero, vamos a instalar Cypress:
+1. Ejecutar el siguiente comando:
 ```
 npm install -D cypress  
 ```
-2. Veremos que se crea una carpeta llamada **cypress** que tiene la siguiente [estructura](https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests.html#Folder-Structure):
+2. Observar que se crea una carpeta llamada **cypress** con la siguiente [estructura](https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests.html#Folder-Structure):
 ```
 /cypress
   /fixtures
@@ -101,7 +99,7 @@ npm install -D cypress
     - commands.js
     - index.js
 ```
-3. Una vez lo tenemos instalado, pasamos a ejecutar los ejemplos. Para esto, añadimos `cypress open` en el comando `test`, de esta forma el archivo `package.json` debe quedar de esta manera:
+3. Añadir en el archivo `package.json` la propiedad: `"test": "cypress open"`, dentro de `scripts`,  ésto hará que el comando `test` ejecute la instrucción `cypress open`. 
 ```javascript
 ...
 "scripts": {
@@ -109,10 +107,10 @@ npm install -D cypress
   },
 ...
 ```
-4. Después, damos click en el botón `Run all specs` para ejecutar todas las pruebas. Es aquí donde vemos cómo funciona la magia del de cypress en frente de nuestros ojos. Una vez termine cerramos la ventana de cypress.
+4. Presionar el botón `Run all specs` para ejecutar todas las pruebas de ejemplo. Es aquí donde vemos cómo funciona la magia de cypress. Una vez finalice, cerramos la ventana de cypress.
 
 ## 3. Creando la primera prueba
-Una vez hemos ejecutado las pruebas de ejemplo con los que viene `Cypress`, eliminamos la carpeta `examples` que está dentro de la carpeta de `integration`.  
+Una vez hemos ejecutado las pruebas de ejemplo, eliminamos la carpeta `examples` que está dentro de la carpeta `integration`.  
 1. Creamos un archivo llamado `google.spec.js` dentro de la carpeta `/cypress/integration/` con el siguiente contenido:  
 ```javascript
 describe('This is my first cypress test', () => {
@@ -122,14 +120,65 @@ describe('This is my first cypress test', () => {
     });
 });
 ```
-2. Una vez corremos la prueba ejecutamos de nuevo `npm test` y ejecutamos la prueba. Si todo está bien vemos que la prueba pasará en verde:  
+2. Ejecutar el comando `npm test` para correr la prueba. Una vez finalice y si todo está bien veremos que la prueba se puso en verde:  
 ![google spec result](https://github.com/AgileTestingColombia/cypress-training/blob/media/images/google-spec.png).
 
 
+
+
 ### 4. Configurando las pruebas con Typescript
-1. Instalar las dependencias necesarias
+1. Instalar las dependencias necesarias 
   ```bash
   npm i -D webpack @cypress/webpack-preprocessor ts-loader typescript
   ```
-2. 
-
+2. Crear el archivo tsconfig.json en la raiz del proyecto y copiar dentro de este las siguientes lineas:
+```javascript
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "skipLibCheck": true,
+        "strict": true,
+        "types": [
+            "cypress"
+        ]
+    },
+    "include": [
+        "cypress/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules/"
+    ]
+}
+```
+3. Crear el archivo webpack.config.js en la raiz del proyecto y agregar las siguientes lineas: 
+```javascript
+module.exports = {
+    mode: 'development',
+    devtool: 'eval-source-map',
+    resolve: {
+      extensions: ['.ts', '.js'],
+    },
+    module: {
+      rules: [
+        {
+          
+          test: /\.ts$/,
+          exclude: [/node_modules/],
+          use: [
+            {
+              loader: 'ts-loader',
+              options: {
+                transpileOnly: true,
+              },
+            },
+          ],
+        },
+      ],
+    },
+  }
+```
+4. Cambiar la extensión de nuestra prueba "google.spec.js" por "google.spec.ts", se ejecuta el comando para correr las pruebas y validamos que corra.
+```bash
+npm test
+```
