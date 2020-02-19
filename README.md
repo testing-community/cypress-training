@@ -203,7 +203,7 @@ npm test
 1. Instalamos las dependencias necesarias y iniciamos la configuración del linter:
 ```bash
 npm install eslint --save-dev
-./node_modules/.bin/eslint --init
+npx eslint --init
 ```
 2. Instalamos una extension del linter para cypress y sus buenas practicas:
 ```bash
@@ -229,9 +229,11 @@ npm install eslint-plugin-cypress --save-dev
 ```json
 "scripts": {
     "test": "eslint ./cypress/integration/**.ts && cypress open"
-  },
+},
 ```
 5. Ejecutamos las pruebas por corriendo el comando test
 ```bash
 npm test
 ```
+
+Nota: En caso de tener errores, algunos de ellos son posible arreglarlos autoáticamente añadiendo el argumento --fix, es decir, usamos `npm run lint -- --fix`.
