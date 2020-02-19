@@ -21,7 +21,7 @@ module.exports = {
         "cypress"
     ],
     "rules": {
-        "quotes": ["error", "double"],
+        "quotes": ["error", "single"],
         "cypress/no-assigning-return-values": "error",
         "cypress/no-unnecessary-waiting": "error",
         "cypress/assertion-before-screenshot": "warn",
