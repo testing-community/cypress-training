@@ -5,12 +5,10 @@
         "skipLibCheck": true,
         "strict": true,
         "types": [
-            // load Cypress global type
             "cypress"
         ]
     },
     "include": [
-        // process only spec files
         "cypress/**/*.ts"
     ],
     "exclude": [

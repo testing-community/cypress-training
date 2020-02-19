@@ -4,7 +4,8 @@
   "description": "This is a Workshop about Cypress",
   "main": "index.js",
   "scripts": {
-    "test": "eslint ./cypress/integration/**.ts && cypress open"
+    "test": "npm run lint && cypress open",
+    "lint": "eslint ./cypress/integration/**.ts"
   },
   "repository": {
     "type": "git",
