@@ -4,7 +4,7 @@
   "description": "This is a Workshop about Cypress",
   "main": "index.js",
   "scripts": {
-    "test": "cypress open"
+    "test": "eslint ./cypress/integration/**.ts && cypress open"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,13 @@
   "homepage": "https://github.com/AgileTestingColombia/cypress-training#readme",
   "devDependencies": {
     "@cypress/webpack-preprocessor": "^4.1.1",
+    "@typescript-eslint/eslint-plugin": "^2.20.0",
+    "@typescript-eslint/parser": "^2.20.0",
     "cypress": "^4.0.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-typescript": "^7.0.0",
+    "eslint-plugin-cypress": "^2.10.2",
+    "eslint-plugin-import": "^2.20.1",
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.5",
     "webpack": "^4.41.6"

@@ -198,3 +198,40 @@ module.exports = (on, config) => {
 ```bash
 npm test
 ```
+
+### 5. Analisis de código estatico
+1. Instalamos las dependencias necesarias y iniciamos la configuración del linter:
+```bash
+npm install eslint --save-dev
+./node_modules/.bin/eslint --init
+```
+2. Instalamos una extension del linter para cypress y sus buenas practicas:
+```bash
+npm install eslint-plugin-cypress --save-dev
+```
+3. Luego agregamos el plugin y las reglas en el archivo eslintrc.js
+```javascript
+...
+    "plugins": [
+        "@typescript-eslint",
+        "cypress"
+    ],
+    "rules": {
+        "quotes": ["error", "double"],
+        "cypress/no-assigning-return-values": "error",
+        "cypress/no-unnecessary-waiting": "error",
+        "cypress/assertion-before-screenshot": "warn",
+        "cypress/no-force": "warn"
+    }
+...
+```
+4. Posteriormente modificamos el script test en el "package.json" para ejecutar la verificación de código estático antes de correr las pruebas:
+```json
+"scripts": {
+    "test": "eslint ./cypress/integration/**.ts && cypress open"
+  },
+```
+5. Ejecutamos las pruebas por corriendo el comando test
+```bash
+npm test
+```
