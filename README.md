@@ -203,7 +203,7 @@ npm test
 1. Para realizar el análisis de código estatico usaremos la herramienta EsLint para validar un conjunto de reglas sobre el código de pruebas y mantener un estilo consistente. Para esto se debe instalar Eslint como dependecia de desarrollo, luego iniciar la configuración del linter y seguimos los pasos que aparecen en consola (ver gif):
 ```bash
 npm install eslint --save-dev
-./node_modules/.bin/eslint --init
+npx eslint --init
 ```
 ![google spec result](https://github.com/AgileTestingColombia/cypress-training/blob/media/images/eslint-init.gif).
 2. Instalar una extension del linter para cypress que contiene reglas de estilo siguiendo las buenas practicas que sugiere cypress:
@@ -230,9 +230,11 @@ npm install eslint-plugin-cypress --save-dev
 ```json
 "scripts": {
     "test": "eslint ./cypress/integration/**.ts && cypress open"
-  },
+},
 ```
 5. Ejecutamos las pruebas por corriendo el comando test
 ```bash
 npm test
 ```
+
+Nota: En caso de tener errores, algunos de ellos son posible arreglarlos autoáticamente añadiendo el argumento --fix, es decir, usamos `npm run lint -- --fix`.
