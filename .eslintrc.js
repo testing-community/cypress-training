@@ -20,13 +20,10 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
-<<<<<<< HEAD
-=======
         "quotes": ["error", "single"],
         "cypress/no-assigning-return-values": "error",
         "cypress/no-unnecessary-waiting": "error",
         "cypress/assertion-before-screenshot": "warn",
         "cypress/no-force": "warn"
->>>>>>> d8af23aabc11e0cb004dcd5fd82a0ae47d3bb4c4
     }
 };

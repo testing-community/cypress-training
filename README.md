@@ -210,7 +210,7 @@ npx eslint --init
 ```bash
 npm install eslint-plugin-cypress --save-dev
 ```
-3. Luego agregar el plugin y las reglas en el archivo eslintrc.js
+3. Luego agregar el plugin de cypress y las reglas en el archivo eslintrc.js
 ```javascript
 ...
     "plugins": [
@@ -229,7 +229,9 @@ npm install eslint-plugin-cypress --save-dev
 4. Posteriormente modificamos el script test en el "package.json" para ejecutar la verificación de código estático antes de correr las pruebas:
 ```json
 "scripts": {
-    "test": "eslint ./cypress/integration/**.ts && cypress open"
+    "test": "npm run lint && cypress open",
+    "lint": "eslint ./cypress/integration/**/*.ts",
+    "lint:fix": "npm run lint -- --fix"
 },
 ```
 5. Ejecutamos las pruebas por corriendo el comando test
