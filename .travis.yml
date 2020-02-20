@@ -13,4 +13,4 @@ except:
 install:
   - npm ci
 script:
-  - npm test
+  - npm run cypress:run
