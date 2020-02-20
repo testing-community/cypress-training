@@ -8,5 +8,3 @@ branches:
 except:
 - "/^v\\d+\\.\\d+\\.\\d+$/"
 
-script:
-  - npm run cypress:run
