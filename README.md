@@ -243,7 +243,7 @@ Nota: En caso de tener errores, algunos de ellos son posible arreglarlos autoát
 
 ### 6. Configurar Integración Continua (CI)
 En esta sección se configura la integración continua por medio de Travis, lo cual nos permitira correr nuestras pruebas en un servidor remoto y validar continuamente que los cambios que vamos a ingresar a nuestra aplicación no han afectado el funcionamient correcto de nuestra aplicación.
-1. Inicialmente creamos el siguiente script en el `package.json` para ejecutar todas las pruebas en la carpeta `cypress/integration/`:
+1. Inicialmente crear el siguiente script en el `package.json` para ejecutar todas las pruebas en la carpeta `cypress/integration/`:
 ```javascript
 "scripts": {
     ...
@@ -251,10 +251,12 @@ En esta sección se configura la integración continua por medio de Travis, lo c
     ...
   },
 ```
-2. Creamos el archivo `.nvmrc` para indicarle al CI que versión de nodeJS debe usar para instalar la aplicación y correr las pruebas- Luego ingresamos la versión de node en el archivo.
+
+2. Luego crear el archivo `.nvmrc` para indicarle al CI que versión de nodeJS debe usar para instalar la aplicación y correr las pruebas. Ingresar la versión de node en el archivo.
 ```text
 v10.16.0
 ```
+
 3. Para indicar la configuración de Travis se debe crear el archivo `.travis.yml` e ingresar la siguiente especificación:
 ```yml
 language: node_js
@@ -271,7 +273,8 @@ script:
   
 ```
 *Nota: Se agrega el script `npm run cypress:run` para ejecutar todas las pruebas, de lo contrario se correria `npm test` por default*
-4. Debido a que cypress por default graba videos de la ejecución de las pruebas es util desactivar esta funcionalidad para disminuir el tiempo de ejecución y disminuir el uso de recursos en el servidor del CI. Para esto se debe ingresar la siguiente configuración en el archivo `cypress.json`
+
+4. Debido a que cypress por default graba videos de la ejecución de las pruebas es util desactivar esta funcionalidad para disminuir el tiempo de ejecución y el uso de recursos en el servidor del CI. Para esto se debe ingresar la siguiente configuración en el archivo `cypress.json`
 ```javascript
 {
   ...
@@ -279,4 +282,4 @@ script:
   ...
 }
 ```
-5. Finalmente subir los cambios al repositorio y crear un Pull Request. Se ejecutaran las pruebas en el servidor que provee Travis y se mostrara los resultados de la ejecución de pruebas en el PR.
+5. Finalmente subir los cambios al repositorio y crear un Pull Request. Se ejecutaran las pruebas en el servidor que provee Travis y se mostrara los resultados de la ejecución en el PR.
