@@ -10,7 +10,6 @@ email: false
 branches:
 except:
 - "/^v\\d+\\.\\d+\\.\\d+$/"
-install:
-  - npm ci
+
 script:
   - npm run cypress:run

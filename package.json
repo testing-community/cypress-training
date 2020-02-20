@@ -7,7 +7,7 @@
     "test": "npm run lint && cypress open",
     "lint": "eslint ./cypress/integration/**/*.ts",
     "lint:fix": "npm run lint -- --fix",
-    "cypress:run": "cypress run --record=false"
+    "cypress:run": "cypress run"
   },
   "repository": {
     "type": "git",
