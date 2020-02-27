@@ -242,8 +242,9 @@ npm test
 Nota: En caso de tener errores, algunos de ellos son posible arreglarlos autoáticamente añadiendo el argumento --fix, es decir, usamos `npm run lint -- --fix`.
 
 ### 6. Configurar Integración Continua (CI)
-En esta sección se configura la integración continua por medio de Travis, lo cual nos permitira correr nuestras pruebas en un servidor remoto y validar continuamente que los cambios que vamos a ingresar a nuestra aplicación no han afectado el funcionamient correcto de nuestra aplicación.
-1. Inicialmente crear el siguiente script en el `package.json` para ejecutar todas las pruebas en la carpeta `cypress/integration/`:
+En esta sección se configura la integración continua por medio de Travis, lo cual nos permitirá correr nuestras pruebas en un servidor remoto y validar continuamente que los cambios que vamos a ingresar a nuestra aplicación no han afectado el funcionamiento correcto.
+
+1. Inicialmente crear el siguiente script en el package.json para ejecutar todas las pruebas de cypress/integration/ sin tener que levantar el explorador. A esto le llamamos headless mode:
 ```javascript
 "scripts": {
     ...
