@@ -276,7 +276,7 @@ script:
 *Nota: Se agrega el script `npm run cypress:run` para ejecutar todas las pruebas, de lo contrario se correria `npm test` por default*
 
 4. Debido a que cypress por default graba videos de la ejecución de las pruebas es util desactivar esta funcionalidad para disminuir el tiempo de ejecución y el uso de recursos en el servidor del CI. Para esto se debe ingresar la siguiente configuración en el archivo `cypress.json`
-```javascript
+```json
 {
   ...
   "video": false
@@ -284,3 +284,42 @@ script:
 }
 ```
 5. Finalmente subir los cambios al repositorio y crear un Pull Request. Se ejecutaran las pruebas en el servidor que provee Travis y se mostrara los resultados de la ejecución en el PR.
+
+### 7. Selectores CSS
+
+En esta sección se realiza un flujo para comprar una camiseta en la tiene de ropa: http://automationpractice.com/. Realizar los siguientes pasos:
+
+1. Primero crear el archivo `buy-shirt.spec.ts` e incluir el siguiente codigo:
+```typescript
+
+describe('Buy a t-shirt', () => {
+
+  it('then should be bought a t-shirt', () => {
+    cy.visit('http://automationpractice.com/')
+    cy.get('#block_top_menu > ul > li:nth-child(3) > a').click()
+    cy.get('#center_column a.button.ajax_add_to_cart_button.btn.btn-default').click()
+    cy.get('[style*="display: block;"] .button-container > a').click()
+    cy.get('.cart_navigation span').click()
+
+    cy.get('#email').type('aperdomobo@gmail.com')
+    cy.get('#passwd').type('WorkshopProtractor')
+    
+    // Debes completar la prueba ...
+
+    cy.get('#center_column > div > p > strong')
+      .should('have.text', 'Your order on My Store is complete.')
+  });
+});
+```
+Usa como apoyo el gif para conocer mas del flujo esperado, extrae los css selector de la UI manualmente y termina la prueba y correla local.
+![google spec result](https://github.com/AgileTestingColombia/cypress-training/blob/media/images/test-flow-buy-shirt.gif)
+3. En algunos la red u otros factores externos a la prueba pueden afectar los tiempos de espera, en el archivo de configuración de cypress `cypress.json` agrega los siguientes atributos y modificalos hasta que las pruebas pasen: 
+```json
+{
+  ...
+    "defaultCommandTimeout": 20000,
+    "responseTimeout": 20000
+  ...
+}
+```
+4. Para finalizar sube tus cambios al repositorio y crea un PR.
