@@ -1,26 +1,36 @@
+import { MenuContentPage, ProductListPage, LoginPage, ShoppingCartPage } from '../page/index'
+
+const menuContentPage = new MenuContentPage()
+const productListPage = new ProductListPage()
+const loginPage = new LoginPage()
+const shoppingCartPage = new ShoppingCartPage()
+
+const userEmail = 'aperdomobo@gmail.com'
+const userPassword = 'WorkshopProtractor'
+const confirmOrderMessage = 'Your order on My Store is complete.'
 
 describe('Buy a t-shirt', () => {
 
   it('then should be bought a t-shirt', () => {
-    cy.visit('http://automationpractice.com/')
-    cy.get('#block_top_menu > ul > li:nth-child(3) > a').click()
-    cy.get('#center_column a.button.ajax_add_to_cart_button.btn.btn-default').click()
-    cy.get('[style*="display: block;"] .button-container > a').click()
-    cy.get('.cart_navigation span').click()
+    menuContentPage.visitMenuContentPage()
+    menuContentPage.goToTShirtMenu()
+    productListPage.addTShirtToCart()
+    productListPage.proceedToCheckout()
 
-    cy.get('#email').type('aperdomobo@gmail.com')
-    cy.get('#passwd').type('WorkshopProtractor')
-    cy.get('#SubmitLogin > span').click()
+    shoppingCartPage.clickProceedToCheckout()
 
-    cy.get('#center_column > form > p > button > span').click();
+    loginPage.typeEmail(userEmail)
+    loginPage.typePassword(userPassword)
+    loginPage.submitLogin()
 
-    cy.get('#cgv').click();
+    shoppingCartPage.clickAddressProceedToCheckout()
 
-    cy.get('#form > p > button > span').click();
-    cy.get('#HOOK_PAYMENT > div:nth-child(1) > div > p > a').click();
-    cy.get('#cart_navigation > button > span').click();
+    shoppingCartPage.checkTermsOfService()
 
-    cy.get('#center_column > div > p > strong')
-      .should('have.text', 'Your order on My Store is complete.')
+    shoppingCartPage.clickShippingProceedToCheckout()
+    shoppingCartPage.clickPayByBankWire()
+    shoppingCartPage.clickConfirmOrder()
+
+    shoppingCartPage.validateConfirmOrderMessage(confirmOrderMessage)
   });
 });

@@ -287,14 +287,18 @@ script:
 
 ### 7. Selectores CSS
 
-En esta sección se realiza un flujo para comprar una camiseta en la tiene de ropa: http://automationpractice.com/. Realizar los siguientes pasos:
+En esta sección se realiza un flujo para comprar una camiseta en la tienda de ropa: http://automationpractice.com/, vamos a usar los css selector para interactuar con cada elemento del DOM.
+
+:scroll: Un poco de teoria: Para interactuar con los elementos del DOM se pueden usar varios mecanismos como CSS selectors, XPATH, jquery+css. Cada uno de estos tiene diferentes beneficios como su performance, legibilidad o la complejidad de la query del elemento con el cual queremos interactuar. Usualmente los CSS selector suelen ser mas rapidos y confiables en la mayoria de navegadores sin embargo lo XPATH permiten realizar busquedas de elementos mas complejas. Te recomendamos investigar este tema ya que son herramientas que nos ayudan en la automatizacion ninguno es mejor que otro simplemente dependen de la situacion. 
+
+Vamos a realizar los siguientes pasos, para automatizar el flujo de compra:
 
 1. Primero crear el archivo `buy-shirt.spec.ts` e incluir el siguiente codigo:
 ```typescript
 
 describe('Buy a t-shirt', () => {
 
-  it('then should be bought a t-shirt', () => {
+  it('then the t-shirt should be bought', () => {
     cy.visit('http://automationpractice.com/')
     cy.get('#block_top_menu > ul > li:nth-child(3) > a').click()
     cy.get('#center_column a.button.ajax_add_to_cart_button.btn.btn-default').click()
@@ -311,8 +315,8 @@ describe('Buy a t-shirt', () => {
   });
 });
 ```
-Usa como apoyo el gif para conocer mas del flujo esperado, extrae los css selector de la UI manualmente y termina la prueba y correla local.
-![google spec result](https://github.com/AgileTestingColombia/cypress-training/blob/media/images/test-flow-buy-shirt.gif)
+Usa como apoyo el gif para conocer mas del flujo esperado, extrae los css selector de la UI manualmente y termina la prueba y correla local.  
+![google spec result](https://github.com/AgileTestingColombia/cypress-training/blob/media/images/test-flow-buy-shirt.gif)  
 3. En algunos la red u otros factores externos a la prueba pueden afectar los tiempos de espera, en el archivo de configuración de cypress `cypress.json` agrega los siguientes atributos y modificalos hasta que las pruebas pasen: 
 ```json
 {
@@ -323,3 +327,60 @@ Usa como apoyo el gif para conocer mas del flujo esperado, extrae los css select
 }
 ```
 4. Para finalizar sube tus cambios al repositorio y crea un PR.
+
+### 8. Page Object Model (POM)
+Page Object Model es un patron para mejorar la mantenibilidad de las pruebas ya que podemos establecer una capa intermedia entre las pruebas y UI de la aplicación, ya que los cambios que requieran las pruebas debido a cambios en la aplicación se pueden realizar rapidamente en el POM. Se recomiendo investigar el patrón y otros patrones utiles que puedan ser usados para el código de pruebas. 
+
+Acontinuación realizar la transformación a POM, por medio de los siguientes pasos:
+1. Crear el archivo `cypress/page/menu-content.page.ts` y agregar el siguiente código:
+```javascript
+class MenuContentPage {
+    private tShirtMenu: string;
+    private menuContentPageURL: string
+
+    constructor() {
+        this.tShirtMenu = '#block_top_menu > ul > li:nth-child(3) > a';
+        this.menuContentPageURL = 'http://automationpractice.com/'
+    }
+
+    public visitMenuContentPage(): void {
+        cy.visit(this.menuContentPageURL)
+    }
+
+    public goToTShirtMenu(): void {
+        cy.get(this.tShirtMenu).click()
+    }
+
+}
+export { MenuContentPage }
+```
+
+2. Posteriormente crear el archivo `cypress/page/index.js` para usar como archivo de salida de todos los page object:
+```javascript
+import { MenuContentPage } from './menu-content.page'
+
+export { MenuContentPage }
+```
+
+3. Luego modificar el archivo `buy-tshirt.spec.ts` para utilizar el POM que acabamos de crear en la prueba:
+```javascript
+import { MenuContentPage } from '../page/index'
+
+const menuContentPage = new MenuContentPage()
+
+describe('Buy a t-shirt', () => {
+
+  it('then should be bought a t-shirt', () => {
+    menuContentPage.visitMenuContentPage()
+    menuContentPage.goToTShirtMenu()
+    cy.get('[style*="display: block;"] .button-container > a').click()
+    cy.get('.cart_navigation span').click()
+
+    // El resto del flujo de la prueba....
+  
+  });
+});
+```
+
+4. Finalmente crear los POM necesarios, modificar la prueba usandolos y subir los cambios al repositorio y crear un PR para solicitar revisión.
+
