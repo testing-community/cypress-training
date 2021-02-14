@@ -335,7 +335,7 @@ Usa como apoyo el gif para conocer mas del flujo esperado, extrae los css select
 
 Page Object Model es un patron para mejorar la mantenibilidad de las pruebas ya que podemos establecer una capa intermedia entre las pruebas y UI de la aplicación, ya que los cambios que requieran las pruebas debido a cambios en la aplicación se pueden realizar rapidamente en el POM. Te recomendamos investigar el patrón y otros patrones utiles que puedan ser usados para el código de pruebas.  
 
-Acontinuación realizar la transformación a POM, por medio de los siguientes pasos:
+A continuación realizar la transformación a POM, por medio de los siguientes pasos:
 
 1. Crear el archivo `cypress/page/menu-content.page.ts` y agregar el siguiente código:
 
@@ -394,3 +394,17 @@ describe('Buy a t-shirt', () => {
 4. Finalmente crear los POM necesarios, modificar la prueba usandolos y subir los cambios al repositorio y crear un PR para solicitar revisión.
 
 `tip:` Agregar POM por cada pagina, ejemplo: product-list, shopping-cart y login.
+
+### 9. AAA pattern
+
+Un patrón común para eescribir pruebas es el patrón AAA que nos ayuda a definir una estructura de cada prueba. Lo que buscamos principalmente es tener mejor orden en cada prueba por medio de 3 pasos:  
+
+* Arrange: Preparar las condiciones necesarias para ejecutar la prueba, ej: Datos de la prueba, carga de pagina donde se ejecuta la prueba.
+* Action: Es la acción del usuario que realmente vamos a probar, Ej: llenar formularios, navegar a otra pagina, hacer clicks.
+* Assert: Verificamos los comportamientos esperados. Ej: Se muestre cierta información, guardado de datos, actualización de datos, mensajes de error, etc...
+
+Vamos a agregar una nueva prueba y la estructuramos usando el patrón AAA:
+
+`Escenario:` Verificar que al navegar a la pagina de vestidos se muestren los vestidos disponibles y sus nombres.
+
+1. crear el archivo 
