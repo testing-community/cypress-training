@@ -397,11 +397,11 @@ describe('Buy a t-shirt', () => {
 
 ### 9. AAA pattern
 
-Un patrón común para eescribir pruebas es el patrón AAA que nos ayuda a definir una estructura de cada prueba. Lo que buscamos principalmente es tener mejor orden en cada prueba por medio de 3 pasos:  
+Un patrón común para escribir pruebas es el patrón AAA que nos ayuda a definir una estructura ordenada de cada prueba, por medio de 3 pasos: 
 
-* Arrange: Preparar las condiciones necesarias para ejecutar la prueba, ej: Datos de la prueba, carga de pagina donde se ejecuta la prueba.
-* Action: Es la acción del usuario que realmente vamos a probar, Ej: llenar formularios, navegar a otra pagina, hacer clicks.
-* Assert: Verificamos los comportamientos esperados. Ej: Se muestre cierta información, guardado de datos, actualización de datos, mensajes de error, etc...
+* **Arrange**: Preparar las condiciones necesarias para ejecutar la prueba, ej: Datos de la prueba, carga de pagina donde se ejecuta la prueba.
+* **Action**: Es la acción del usuario que realmente vamos a probar, Ej: llenar formularios, navegar a otra pagina, hacer clicks.
+* **Assert**: Verificamos los comportamientos esperados. Ej: Se muestre cierta información, guardado de datos, actualización de datos, mensajes de error, etc...
 
 Vamos a agregar una nueva prueba y la estructuramos usando el patrón AAA:
 
