@@ -289,7 +289,7 @@ script:
 
 En esta sección se realiza un flujo para comprar una camiseta en la tienda de ropa: http://automationpractice.com/, vamos a usar los css selector para interactuar con cada elemento del DOM.
 
-:scroll: Un poco de teoria: Para interactuar con los elementos del DOM se pueden usar varios mecanismos como CSS selectors, XPATH, jquery+css. Cada uno de estos tiene diferentes beneficios como su performance, legibilidad o la complejidad de la query del elemento con el cual queremos interactuar. Usualmente los CSS selector suelen ser mas rapidos y confiables en la mayoria de navegadores sin embargo lo XPATH permiten realizar busquedas de elementos mas complejas. Te recomendamos investigar este tema ya que son herramientas que nos ayudan en la automatizacion ninguno es mejor que otro simplemente dependen de la situacion. 
+:scroll: Un poco de teoria: Para interactuar con los elementos del DOM se pueden usar varios mecanismos como CSS selectors, XPATH, jquery+css. Cada uno de estos tiene diferentes beneficios como su performance, legibilidad o la complejidad de la query del elemento con el cual queremos interactuar. Usualmente los CSS selector suelen ser mas rapidos y confiables en la mayoria de navegadores sin embargo lo XPATH permiten realizar busquedas de elementos mas complejas. Te recomendamos investigar las diferencias entre ambos tipos de selectores teniendo en cuenta factores como: manteniblidad, flexiblidad y velocidad de busqueda de un elemento. 
 
 Vamos a realizar los siguientes pasos, para automatizar el flujo de compra:
 
@@ -315,8 +315,10 @@ describe('Buy a t-shirt', () => {
   });
 });
 ```
-Usa como apoyo el gif para conocer mas del flujo esperado, extrae los css selector de la UI manualmente y termina la prueba y correla local.  
+Usa como apoyo el gif para conocer mas del flujo esperado, extrae los css selector de la UI manualmente, termina la prueba y correla local.  
+
 ![google spec result](https://github.com/AgileTestingColombia/cypress-training/blob/media/images/test-flow-buy-shirt.gif)  
+
 3. En algunos la red u otros factores externos a la prueba pueden afectar los tiempos de espera, en el archivo de configuración de cypress `cypress.json` agrega los siguientes atributos y modificalos hasta que las pruebas pasen: 
 ```json
 {
@@ -326,13 +328,18 @@ Usa como apoyo el gif para conocer mas del flujo esperado, extrae los css select
   ...
 }
 ```
+
 4. Para finalizar sube tus cambios al repositorio y crea un PR.
 
-### 8. Page Object Model (POM)
-Page Object Model es un patron para mejorar la mantenibilidad de las pruebas ya que podemos establecer una capa intermedia entre las pruebas y UI de la aplicación, ya que los cambios que requieran las pruebas debido a cambios en la aplicación se pueden realizar rapidamente en el POM. Se recomiendo investigar el patrón y otros patrones utiles que puedan ser usados para el código de pruebas. 
+### 8. Page Object Model (POM)  
+
+Page Object Model es un patron para mejorar la mantenibilidad de las pruebas ya que podemos establecer una capa intermedia entre las pruebas y UI de la aplicación, ya que los cambios que requieran las pruebas debido a cambios en la aplicación se pueden realizar rapidamente en el POM. Te recomendamos investigar el patrón y otros patrones utiles que puedan ser usados para el código de pruebas.  
 
 Acontinuación realizar la transformación a POM, por medio de los siguientes pasos:
+
 1. Crear el archivo `cypress/page/menu-content.page.ts` y agregar el siguiente código:
+
+
 ```javascript
 class MenuContentPage {
     private tShirtMenu: string;
@@ -356,6 +363,7 @@ export { MenuContentPage }
 ```
 
 2. Posteriormente crear el archivo `cypress/page/index.js` para usar como archivo de salida de todos los page object:
+
 ```javascript
 import { MenuContentPage } from './menu-content.page'
 
@@ -363,6 +371,7 @@ export { MenuContentPage }
 ```
 
 3. Luego modificar el archivo `buy-tshirt.spec.ts` para utilizar el POM que acabamos de crear en la prueba:
+
 ```javascript
 import { MenuContentPage } from '../page/index'
 
@@ -384,3 +393,4 @@ describe('Buy a t-shirt', () => {
 
 4. Finalmente crear los POM necesarios, modificar la prueba usandolos y subir los cambios al repositorio y crear un PR para solicitar revisión.
 
+`tip:` Agregar POM por cada pagina, ejemplo: product-list, shopping-cart y login.
