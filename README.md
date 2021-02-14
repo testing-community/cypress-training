@@ -407,4 +407,66 @@ Vamos a agregar una nueva prueba y la estructuramos usando el patrón AAA:
 
 `Escenario:` Verificar que al navegar a la pagina de vestidos se muestren los vestidos disponibles y sus nombres.
 
-1. crear el archivo 
+1. Primero agregamos el archivo del Page Object para la pagina de vestidos, (recuerda agregarlo al `index.ts` de la carpeta `/page`):  
+
+```javascript
+class DressesListPage {
+
+  private dressItem: string;
+  private dressName: string;
+
+  constructor(){
+    this.dressItem = '.product-container'
+    this.dressName = `${this.dressItem} .product-name`
+  }
+
+  getDressProducts(){
+    return cy.get(this.dressItem)
+  }
+
+  validateItemsNumber(itemsNumber: number){
+    cy.get(this.dressItem).should('have.length', itemsNumber)
+  }
+
+  validateItemsNames(names: string[]){
+    cy.get(this.dressName).each((item, index) => {
+      cy.wrap(item).should('contain.text', names[index])
+    })
+  }
+
+}
+
+export {DressesListPage}
+```
+
+2. Creamos el archivo `dresses-list.spec.ts` para realizar la prueba de la lista de vestidos.  
+
+```javascript
+import { MenuContentPage, DressesListPage } from '../page/index'
+
+
+describe('the user navigates to the dresses page should', () => {
+
+  let menuContentPage: MenuContentPage;
+  let dressesListPage: DressesListPage;
+
+  before(() => {
+    menuContentPage = new MenuContentPage();
+    dressesListPage = new DressesListPage();
+  })
+
+  it('show the available dresses', () => {
+    // ... realiza la prueba
+  })
+})
+```
+
+3. Crea la prueba teniendo en cuenta el patrón AAA:
+   1. Arrange: Crea un arreglo con los nombre esperados de cada vestido y visita la página del menu principal.
+   2. Action: Navega al menu de vestidos donde se carga la lista de vestidos diponibles.
+   3. Assert: Verifica que se visualicen 5 vestidos y que tengan los nombres esperados (el orden es importante).
+
+`tip:` Recuerda aplicar los Page Object al construir la prueba.
+`Challenge:` Investiga como funciona los métodos **validate** en el archivo `dresses-list.page.ts`.
+
+4. Actualiza la prueba de comprar tshirt en el archivo `buy-tshirt.spec.ts` para que siga el patrón AAA.
