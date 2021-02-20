@@ -365,9 +365,8 @@ export { MenuContentPage }
 2. Posteriormente crear el archivo `cypress/page/index.js` para usar como archivo de salida de todos los page object:
 
 ```javascript
-import { MenuContentPage } from './menu-content.page'
+export { MenuContentPage } from './menu-content.page'
 
-export { MenuContentPage }
 ```
 
 3. Luego modificar el archivo `buy-tshirt.spec.ts` para utilizar el POM que acabamos de crear en la prueba:
@@ -391,6 +390,10 @@ describe('Buy a t-shirt', () => {
 });
 ```
 
-4. Finalmente crear los POM necesarios, modificar la prueba usandolos y subir los cambios al repositorio y crear un PR para solicitar revisión.
+4. Posteriormente, crear el resto de page object y reemplazarlos en la prueba. Los nombre de los page object son: **products-list.page.ts**, **shoping-cart.page.ts**, **login.page.ts**, **address-step.page.ts**, **shipping-step.page.ts** y **payment-step.page.ts**
 
-`tip:` Agregar POM por cada pagina, ejemplo: product-list, shopping-cart y login.
+`tip:` Agrega los page object al archivo 'page/index.ts' para facilitar el import de cada page object en las pruebas.
+
+5. Ejecute las pruebas y verifica que pasen. Si alguna falla modificala usando los css locators y el tiempo de espera configurado hasta que pasen.
+
+6. Cree un PR y solicitie revisión del punto anterior.
