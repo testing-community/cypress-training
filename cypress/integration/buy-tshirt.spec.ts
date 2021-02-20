@@ -1,9 +1,12 @@
-import { MenuContentPage, ProductListPage, LoginPage, ShoppingCartPage } from '../page/index'
+import { MenuContentPage, ProductListPage, LoginPage, ShoppingCartPage, AddressStepPage, ShippingStepPage, PaymentStepPage } from '../page/index'
 
 let menuContentPage: MenuContentPage
 let productListPage: ProductListPage
 let loginPage: LoginPage
 let shoppingCartPage: ShoppingCartPage
+let addressStepPage: AddressStepPage
+let shippingStepPage: ShippingStepPage
+let paymentStepPage: PaymentStepPage
 
 const userEmail = 'aperdomobo@gmail.com'
 const userPassword = 'WorkshopProtractor'
@@ -16,6 +19,9 @@ describe('Buy a t-shirt', () => {
     productListPage = new ProductListPage()
     loginPage = new LoginPage()
     shoppingCartPage = new ShoppingCartPage()
+    addressStepPage = new AddressStepPage()
+    shippingStepPage = new ShippingStepPage()
+    paymentStepPage = new PaymentStepPage();
   })
 
   it('then should be bought a t-shirt', () => {
@@ -26,16 +32,15 @@ describe('Buy a t-shirt', () => {
 
     shoppingCartPage.clickProceedToCheckout()
 
-    loginPage.fill(userEmail, userPassword)
-    loginPage.submitLogin()
+    loginPage.login(userEmail, userPassword)
 
-    shoppingCartPage.clickAddressProceedToCheckout()
+    addressStepPage.clickAddressProceedToCheckout()
 
-    shoppingCartPage.checkTermsOfService()
+    shippingStepPage.checkTermsOfService()
+    shippingStepPage.clickShippingProceedToCheckout()
 
-    shoppingCartPage.clickShippingProceedToCheckout()
-    shoppingCartPage.clickPayByBankWire()
-    shoppingCartPage.clickConfirmOrder()
+    paymentStepPage.clickPayByBankWire()
+    paymentStepPage.clickConfirmOrder()
 
     shoppingCartPage.validateConfirmOrderMessage(confirmOrderMessage)
   });

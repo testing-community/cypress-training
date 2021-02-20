@@ -9,13 +9,10 @@ class LoginPage {
         this.submitLoginButton = '#SubmitLogin > span'
     }
 
-    public fill(email: string, password: string){
+    public login(email: string, password: string){
       cy.get(this.emailField).type(email)
         .get(this.passwordField).type(password)
-    }
-
-    public submitLogin(): void {
-        cy.get(this.submitLoginButton).click()
+        .get(this.submitLoginButton).click()
     }
 }
 

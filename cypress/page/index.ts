@@ -1,12 +1,7 @@
-import { MenuContentPage } from './menu-content.page'
-import { ProductListPage } from './products-list.page'
-import { LoginPage } from './login.page'
-import { ShoppingCartPage } from './shoping-cart.page'
-import { DressesListPage } from './dresses-list.page'
-
-export {
-  MenuContentPage,
-  ProductListPage,
-  LoginPage,
-  ShoppingCartPage,
-  DressesListPage }
+export { MenuContentPage } from './menu-content.page'
+export { ProductListPage } from './products-list.page'
+export { LoginPage } from './login.page'
+export { ShoppingCartPage } from './shoping-cart.page'
+export { AddressStepPage } from './address-step.page'
+export { ShippingStepPage } from './shipping-step.page'
+export { PaymentStepPage } from './payment-step.page'
