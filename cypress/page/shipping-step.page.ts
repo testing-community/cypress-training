@@ -1,5 +1,4 @@
 class ShippingStepPage{
-
   private shippingProceedToCheckout: string
   private termsOfServiceCheckBox: string
 

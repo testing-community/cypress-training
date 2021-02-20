@@ -390,7 +390,7 @@ describe('Buy a t-shirt', () => {
 });
 ```
 
-4. Posteriormente, crear el resto de page object y reemplazarlos en la prueba. Los nombre de los page object son: **products-list.page.ts**, **shoping-cart.page.ts**, **login.page.ts**, **address-step.page.ts**, **shipping-step.page.ts** y **payment-step.page.ts**
+4. Posteriormente, crear el resto de page object y reemplazarlos en la prueba. Los nombres de los page object son: **products-list.page.ts**, **shoping-cart.page.ts**, **login.page.ts**, **address-step.page.ts**, **shipping-step.page.ts** y **payment-step.page.ts**
 
 `tip:` Agrega los page object al archivo 'page/index.ts' para facilitar el import de cada page object en las pruebas.
 
