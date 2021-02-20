@@ -3,7 +3,7 @@ class ShippingStepPage{
   private termsOfServiceCheckBox: string
 
   constructor(){
-    this.shippingProceedToCheckout = '#form > p > button > span'
+    this.shippingProceedToCheckout = '[name="processCarrier"]'
     this.termsOfServiceCheckBox = '#cgv'
   }
 
