@@ -2,7 +2,7 @@ class AddressStepPage {
   private addressProceedToCheckoutButton: string
 
   constructor(){
-    this.addressProceedToCheckoutButton = '#center_column > form > p > button > span'
+    this.addressProceedToCheckoutButton = '[name="processAddress"]'
   }
 
   public clickAddressProceedToCheckout(): void {
