@@ -27,7 +27,7 @@ describe('Buy a t-shirt', () => {
   it('then should be bought a t-shirt', () => {
     menuContentPage.visitMenuContentPage()
     menuContentPage.goToTShirtMenu()
-    productListPage.addTShirtToCart()
+    productListPage.AddTShirtToCart('Faded Short Sleeve T-shirts')
     productListPage.proceedToCheckout()
 
     shoppingCartPage.clickProceedToCheckout()
