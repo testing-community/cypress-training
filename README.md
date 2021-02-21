@@ -335,7 +335,7 @@ Usa como apoyo el gif para conocer mas del flujo esperado, extrae los css select
 
 Page Object Model es un patron para mejorar la mantenibilidad de las pruebas ya que podemos establecer una capa intermedia entre las pruebas y UI de la aplicación, ya que los cambios que requieran las pruebas debido a cambios en la aplicación se pueden realizar rapidamente en el POM. Te recomendamos investigar el patrón y otros patrones utiles que puedan ser usados para el código de pruebas.  
 
-Acontinuación realizar la transformación a POM, por medio de los siguientes pasos:
+A continuación realizar la transformación a POM, por medio de los siguientes pasos:
 
 1. Crear el archivo `cypress/page/menu-content.page.ts` y agregar el siguiente código:
 
@@ -397,3 +397,81 @@ describe('Buy a t-shirt', () => {
 5. Ejecute las pruebas y verifica que pasen. Si alguna falla modificala usando los css locators y el tiempo de espera configurado hasta que pasen.
 
 6. Cree un PR y solicitie revisión del punto anterior.
+
+### 9. AAA pattern
+
+Un patrón común para escribir pruebas es el patrón AAA que nos ayuda a definir una estructura ordenada de cada prueba, por medio de 3 pasos: 
+
+* **Arrange**: Preparar las condiciones necesarias para ejecutar la prueba, ej: Datos de la prueba, carga de pagina donde se ejecuta la prueba.
+* **Action**: Es la acción del usuario que realmente vamos a probar, Ej: llenar formularios, navegar a otra pagina, hacer clicks.
+* **Assert**: Verificamos los comportamientos esperados. Ej: Se muestre cierta información, guardado de datos, actualización de datos, mensajes de error, etc...
+
+Vamos a agregar una nueva prueba y la estructuramos usando el patrón AAA:
+
+`Escenario:` Verificar que al navegar a la pagina de vestidos se muestren los vestidos disponibles y sus nombres.
+
+1. Primero agregamos el archivo del Page Object para la pagina de vestidos, (recuerda agregarlo al `index.ts` de la carpeta `/page`):  
+
+```javascript
+class DressesListPage {
+
+  private dressItem: string;
+  private dressName: string;
+
+  constructor(){
+    this.dressItem = '.product-container'
+    this.dressName = `${this.dressItem} .product-name`
+  }
+
+  getDressProducts(){
+    return cy.get(this.dressItem)
+  }
+
+  validateItemsNumber(itemsNumber: number){
+    cy.get(this.dressItem).should('have.length', itemsNumber)
+  }
+
+  validateItemsNames(names: string[]){
+    cy.get(this.dressName).each((item, index) => {
+      cy.wrap(item).should('contain.text', names[index])
+    })
+  }
+
+}
+
+export {DressesListPage}
+```
+
+2. Creamos el archivo `dresses-list.spec.ts` para realizar la prueba de la lista de vestidos.  
+
+```javascript
+import { MenuContentPage, DressesListPage } from '../page/index'
+
+
+describe('the user navigates to the dresses page should', () => {
+
+  let menuContentPage: MenuContentPage;
+  let dressesListPage: DressesListPage;
+
+  before(() => {
+    menuContentPage = new MenuContentPage();
+    dressesListPage = new DressesListPage();
+  })
+
+  it('show the available dresses', () => {
+    // ... realiza la prueba
+  })
+})
+```
+
+3. Crea la prueba teniendo en cuenta el patrón AAA:
+   1. Arrange: Crea un arreglo con los nombre esperados de cada vestido y visita la página del menu principal.
+   2. Action: Navega al menu de vestidos donde se carga la lista de vestidos diponibles.
+   3. Assert: Verifica que se visualicen 5 vestidos y que tengan los nombres esperados (el orden es importante).
+
+`tip:` Recuerda aplicar los Page Object al construir la prueba.
+`Challenge:` Investiga como funciona los métodos **validate** en el archivo `dresses-list.page.ts`.
+
+4. Actualiza la prueba de comprar tshirt en el archivo `buy-tshirt.spec.ts` para que siga el patrón AAA.
+
+5. Verifica que las pruebas corran bien, crea un PR y solicita la revisión.

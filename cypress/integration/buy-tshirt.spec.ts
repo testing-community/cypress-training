@@ -12,7 +12,7 @@ const userEmail = 'aperdomobo@gmail.com'
 const userPassword = 'WorkshopProtractor'
 const confirmOrderMessage = 'Your order on My Store is complete.'
 
-describe('Buy a t-shirt', () => {
+describe('The user navigates to the Shopping page', () => {
 
   before(() => {
     menuContentPage = new MenuContentPage()
@@ -22,23 +22,20 @@ describe('Buy a t-shirt', () => {
     addressStepPage = new AddressStepPage()
     shippingStepPage = new ShippingStepPage()
     paymentStepPage = new PaymentStepPage();
+
+    menuContentPage.visitMenuContentPage()
   })
 
-  it('then should be bought a t-shirt', () => {
-    menuContentPage.visitMenuContentPage()
+  it('Then completes the shopping process and verifies the confirmation order message', () => {
+
     menuContentPage.goToTShirtMenu()
     productListPage.addTShirtToCart()
     productListPage.proceedToCheckout()
-
     shoppingCartPage.clickProceedToCheckout()
-
     loginPage.login(userEmail, userPassword)
-
     addressStepPage.clickAddressProceedToCheckout()
-
     shippingStepPage.checkTermsOfService()
     shippingStepPage.clickShippingProceedToCheckout()
-
     paymentStepPage.clickPayByBankWire()
     paymentStepPage.clickConfirmOrder()
 
