@@ -398,7 +398,6 @@ describe('Buy a t-shirt', () => {
 
 6. Cree un PR y solicitie revisión del punto anterior.
 
-<<<<<<< HEAD
 ### 9. Mejorando los selectores
 
 En esta sección presentaras una propuesta para los selectores que se estan usando para la pruebas:
@@ -422,9 +421,6 @@ En algunos escenarios debemos trabajar con lista de elementos, realizar busqueda
 5. Sube la rama, crea un pull request y solicita la revisión del cambio
 
 ### 11. AAA pattern
-=======
-### 9. AAA pattern
->>>>>>> a150621f87454d9227bcde59f15aadc54fc31326
 
 Un patrón común para escribir pruebas es el patrón AAA que nos ayuda a definir una estructura ordenada de cada prueba, por medio de 3 pasos: 
 

@@ -1,7 +1,6 @@
 class ProductListPage {
   private addToCartButton: string
   private proceedToCheckoutButton: string
-<<<<<<< HEAD
   private productCard: string
 
   constructor() {
@@ -20,20 +19,6 @@ class ProductListPage {
 
   public AddTShirtToCart(productName: string): void {
     this.findProductByName(productName).find(this.addToCartButton).click()
-=======
-
-  constructor() {
-      this.addToCartButton = '#center_column a.button.ajax_add_to_cart_button.btn.btn-default'
-      this.proceedToCheckoutButton = '[style*="display: block;"] .button-container > a'
-  }
-
-  public addTShirtToCart(): void {
-      cy.get(this.addToCartButton).click()
-  }
-
-  public proceedToCheckout(): void {
-      cy.get(this.proceedToCheckoutButton).click()
->>>>>>> a150621f87454d9227bcde59f15aadc54fc31326
   }
 }
 
