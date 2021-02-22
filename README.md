@@ -398,7 +398,33 @@ describe('Buy a t-shirt', () => {
 
 6. Cree un PR y solicitie revisión del punto anterior.
 
+<<<<<<< HEAD
+### 9. Mejorando los selectores
+
+En esta sección presentaras una propuesta para los selectores que se estan usando para la pruebas:
+
+1. Realice su propia propuesta de los selectores de cada page object.
+2. Verificar que las pruebas pasen
+3. Crear un PR y solicitar revisión. El revisor comentará los selectores con los que no esta de acuerdo, en ese caso, justifique su propesta de selector. (No use **XPATH**)
+
+### 10. Listas de elementos, filtros y elementos dentro de elementos
+
+En algunos escenarios debemos trabajar con lista de elementos, realizar busquedas sobre locator anidados o realizar acciones sobre elementos hijos del selector que tenemos disponible.
+
+1. Agregar una variable privada dentro del page object `products-list.page.ts` con un selector que obtendra todos los elementos html de los productos.
+
+2. Cree un método privado llamado `findProductByName` el cual debe retornar el contenedor (elemento html) del producto cuyo nombre se pasa por parametro. Puedes basarte en el comando **filter** de cypres, revisa la api de Cypress: [API de cypress](https://docs.cypress.io/api/api/table-of-contents.html)
+
+3. Modifica el método `addTShirtToCart()` para que reciba por parametro el nombre del producto. Usa el método creado previamente para darle click al boton de 'Add to Cart' del producto. Puedes revisar el comando **find** the cypress.
+
+4. Ejecuta las pruebas y verifica que pasen :heavy_check_mark:
+
+5. Sube la rama, crea un pull request y solicita la revisión del cambio
+
+### 11. AAA pattern
+=======
 ### 9. AAA pattern
+>>>>>>> a150621f87454d9227bcde59f15aadc54fc31326
 
 Un patrón común para escribir pruebas es el patrón AAA que nos ayuda a definir una estructura ordenada de cada prueba, por medio de 3 pasos: 
 
@@ -473,5 +499,8 @@ describe('the user navigates to the dresses page should', () => {
 `Challenge:` Investiga como funciona los métodos **validate** en el archivo `dresses-list.page.ts`.
 
 4. Actualiza la prueba de comprar tshirt en el archivo `buy-tshirt.spec.ts` para que siga el patrón AAA.
+<<<<<<< HEAD
+=======
 
 5. Verifica que las pruebas corran bien, crea un PR y solicita la revisión.
+>>>>>>> a150621f87454d9227bcde59f15aadc54fc31326

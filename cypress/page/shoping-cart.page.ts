@@ -4,7 +4,11 @@ class ShoppingCartPage {
 
   constructor() {
     this.proceedCheckout = '.cart_navigation span'
+<<<<<<< HEAD
+    this.confirmOrderMessage = '#center_column .cheque-indent strong'
+=======
     this.confirmOrderMessage = '#center_column > div > p > strong'
+>>>>>>> a150621f87454d9227bcde59f15aadc54fc31326
   }
 
   public clickProceedToCheckout(): void {

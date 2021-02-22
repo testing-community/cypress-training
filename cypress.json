@@ -1,5 +1,16 @@
 {
     "video": false,
     "defaultCommandTimeout": 20000,
+<<<<<<< HEAD
+    "responseTimeout": 20000,
+    "reporter": "mochawesome",
+    "reporterOptions": {
+      "reportDir": "cypress/results",
+      "overwrite": false,
+      "html": false,
+      "json": true
+    }
+=======
     "responseTimeout": 20000
+>>>>>>> a150621f87454d9227bcde59f15aadc54fc31326
 }

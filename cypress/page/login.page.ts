@@ -6,7 +6,11 @@ class LoginPage {
     constructor() {
         this.emailField = '#email'
         this.passwordField = '#passwd'
+<<<<<<< HEAD
+        this.submitLoginButton = '#SubmitLogin'
+=======
         this.submitLoginButton = '#SubmitLogin > span'
+>>>>>>> a150621f87454d9227bcde59f15aadc54fc31326
     }
 
     public login(email: string, password: string){
