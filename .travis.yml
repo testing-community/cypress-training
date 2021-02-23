@@ -8,4 +8,4 @@ branches:
 except:
 - "/^v\\d+\\.\\d+\\.\\d+$/"
 script:
-  - npm run test:run
+  - npm run test

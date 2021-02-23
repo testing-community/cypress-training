@@ -495,8 +495,58 @@ describe('the user navigates to the dresses page should', () => {
 `Challenge:` Investiga como funciona los métodos **validate** en el archivo `dresses-list.page.ts`.
 
 4. Actualiza la prueba de comprar tshirt en el archivo `buy-tshirt.spec.ts` para que siga el patrón AAA.
-<<<<<<< HEAD
-=======
 
 5. Verifica que las pruebas corran bien, crea un PR y solicita la revisión.
->>>>>>> a150621f87454d9227bcde59f15aadc54fc31326
+
+
+### 12. Mejorando los reportes - Mochawesome
+
+Algunas veces es bueno mejorar el reporte visual de la ejecución de nuestras pruebas, para eso agregaremos `mochawesome` y lo integraremos con cypress. Siga los siguientes pasos:
+
+1. Instalaremos las siguientes dependencias:
+```bash
+npm install mocha --save-dev
+npm install mocha --save-dev
+
+// Para mantenr el reporte actual (en la terminal) y agregar mochawesome
+npm install cypress-multi-reporters --save-dev
+
+// Para procesar los reportes generados al terminar la ejecución
+npm install mochawesome-merge --save-dev
+npm install mochawesome-report-generator --save-dev
+```
+
+2. Agregamos la siguiente configuración al archivo `cypress.json`:
+
+```json
+"reporter": "cypress-multi-reporters",
+    "reporterOptions": {
+        "reporterEnabled": "mochawesome",
+        "mochawesomeReporterOptions": {
+            "reportDir": "cypress/reports/mocha",
+            "quite": true,
+            "overwrite": false,
+            "html": false,
+            "json": true
+        }
+    }
+```
+
+3. Agrega script en el `package.json` para limpiar la carpeta `cypress/reports`
+
+4. Agrega estos sripts para procesar el reporte generado al ejecutar las pruebas:
+
+```json
+{
+  "combine-reports": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/report.json",
+  "generate-report": "marge cypress/reports/report.json -f report -o cypress/reports",
+}
+```
+
+5. Invetiga los hooks **pre** y **post** de npm para ejecutar scripts antes y despues de las pruebas:
+- **pre:** Limpiar el la carpeta de reportes
+- **post:** ejecutar los scripts para procesar el reporte generado por la ejecución de pruebas.
+
+6. agrega la carpeta de reportes al *.gitignore* para que no se suban los reportes.
+
+7. Sube el cambio con una foto del reporte generado por ``mochawesome`, crea un PR y solicita la revisión.
