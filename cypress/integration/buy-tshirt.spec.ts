@@ -24,7 +24,6 @@ describe('The user navigates to the Shopping page', () => {
     paymentStepPage = new PaymentStepPage();
   })
 
-
   it('Then completes the shopping process and verifies the confirmation order message', () => {
     menuContentPage.visitMenuContentPage()
     menuContentPage.goToTShirtMenu()

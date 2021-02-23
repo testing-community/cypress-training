@@ -116,12 +116,12 @@ npm install -D cypress
     - index.js
 ```
 
-3. Añadir en el archivo `package.json` la propiedad: `"test": "cypress open"`, dentro de `scripts`,  ésto hará que el comando `test` ejecute la instrucción `cypress open`.
+3. Añadir en el archivo `package.json` la propiedad: `"test:open": "cypress open"`, dentro de `scripts`,  ésto hará que el comando `test:open` ejecute la instrucción `cypress open`.
 
 ```javascript
 ...
 "scripts": {
-    "test": "cypress open"
+    "test:open": "cypress open"
   },
 ...
 ```
@@ -264,20 +264,20 @@ npm install eslint-plugin-cypress --save-dev
 ...
 ```
 
-4. Posteriormente modificamos el script test en el "package.json" para ejecutar la verificación de código estático antes de correr las pruebas:
+4. Posteriormente modificamos el script test:open en el "package.json" para ejecutar la verificación de código estático antes de correr las pruebas:
 
 ```json
 "scripts": {
-    "test": "npm run lint && cypress open",
+    "test:open": "npm run lint && cypress open",
     "lint": "eslint ./cypress/integration/**/*.ts",
     "lint:fix": "npm run lint -- --fix"
 },
 ```
 
-5. Ejecutamos las pruebas por corriendo el comando test
+5. Ejecutamos las pruebas por corriendo el comando test:open
 
 ```bash
-npm test
+npm run test:open
 ```
 
 Nota: En caso de tener errores, algunos de ellos son posible arreglarlos autoáticamente añadiendo el argumento --fix, es decir, usamos `npm run lint -- --fix`.
@@ -291,7 +291,7 @@ En esta sección se configura la integración continua por medio de Travis, lo c
 ```javascript
 "scripts": {
     ...
-    "cypress:run": "cypress run"
+    "test": "cypress run"
     ...
   },
 ```
@@ -315,11 +315,11 @@ branches:
 except:
 - "/^v\\d+\\.\\d+\\.\\d+$/"
 script:
-  - npm run cypress:run
+  - npm test
   
 ```
 
-*Nota: Se agrega el script `npm run cypress:run` para ejecutar todas las pruebas, de lo contrario se correria `npm test` por default*
+*Nota: Se agrega el script `npm test` para ejecutar todas las pruebas*
 
 4. Debido a que cypress por default graba videos de la ejecución de las pruebas es util desactivar esta funcionalidad para disminuir el tiempo de ejecución y el uso de recursos en el servidor del CI. Para esto se debe ingresar la siguiente configuración en el archivo `cypress.json`
 
@@ -455,27 +455,8 @@ En esta sección presentaras una propuesta para los selectores que se estan usan
 1. Realice su propia propuesta de los selectores de cada page object.
 2. Verificar que las pruebas pasen
 3. Crear un PR y solicitar revisión. El revisor comentará los selectores con los que no esta de acuerdo, en ese caso, justifique su propesta de selector. (No use **XPATH**)
-<<<<<<< HEAD
-=======
 
 ### 10. AAA pattern
->>>>>>> 44dba9072c443434b0c96fb1a38e15cde5f3b3e3
-
-### 10. Listas de elementos, filtros y elementos dentro de elementos
-
-En algunos escenarios debemos trabajar con lista de elementos, realizar busquedas sobre locator anidados o realizar acciones sobre elementos hijos del selector que tenemos disponible.
-
-1. Agregar una variable privada dentro del page object `products-list.page.ts` con un selector que obtendra todos los elementos html de los productos.
-
-2. Cree un método privado llamado `findProductByName` el cual debe retornar el contenedor (elemento html) del producto cuyo nombre se pasa por parametro. Puedes basarte en el comando **filter** de cypres, revisa la api de Cypress: [API de cypress](https://docs.cypress.io/api/api/table-of-contents.html)
-
-3. Modifica el método `addTShirtToCart()` para que reciba por parametro el nombre del producto. Usa el método creado previamente para darle click al boton de 'Add to Cart' del producto. Puedes revisar el comando **find** the cypress.
-
-4. Ejecuta las pruebas y verifica que pasen :heavy_check_mark:
-
-5. Sube la rama, crea un pull request y solicita la revisión del cambio
-
-### 11. AAA pattern
 
 Un patrón común para escribir pruebas es el patrón AAA que nos ayuda a definir una estructura ordenada de cada prueba, por medio de 3 pasos:
 
