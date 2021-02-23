@@ -22,20 +22,23 @@ describe('The user navigates to the Shopping page', () => {
     addressStepPage = new AddressStepPage()
     shippingStepPage = new ShippingStepPage()
     paymentStepPage = new PaymentStepPage();
-
-    menuContentPage.visitMenuContentPage()
   })
 
   it('Then completes the shopping process and verifies the confirmation order message', () => {
-
+    menuContentPage.visitMenuContentPage()
     menuContentPage.goToTShirtMenu()
-    productListPage.addTShirtToCart()
+    productListPage.AddTShirtToCart('Faded Short Sleeve T-shirts')
     productListPage.proceedToCheckout()
+
     shoppingCartPage.clickProceedToCheckout()
+
     loginPage.login(userEmail, userPassword)
+
     addressStepPage.clickAddressProceedToCheckout()
+
     shippingStepPage.checkTermsOfService()
     shippingStepPage.clickShippingProceedToCheckout()
+
     paymentStepPage.clickPayByBankWire()
     paymentStepPage.clickConfirmOrder()
 
