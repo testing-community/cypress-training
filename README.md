@@ -1,15 +1,20 @@
 # Workshop Cypress
+
 ## 1. Creación y configuración del proyecto
+
 1. Crear un repositorio en github con el nombre de **cypress-training** (previo requisito disponer de una cuenta en github).
 2. Crear el archivo **.gitignore** en la raíz del proyecto, luego ingrese a la página <https://www.gitignore.io/> y en el campo de texto digite su sistema operativo (ej: windows, osx, macos) y selecciónelo de la lista de autocompletar. Repita este paso para su entorno de desarrollo (ej:visualstudio, sublime, intellij, jetbrains), también agregue la palabra `node`. Presione el botón "Generate" para crear el archivo que contendrá una lista de carpetas y archivos de exclusión y copie su contenido dentro del archivo **.gitignore**. Por último, agregue al final de su archivo .gitignore las siguientes líneas para no subir los videos y capturas generadas en la ejecución de las pruebas:
+
   ```
   ...
   cypress/videos
   cypress/screenshots
   ...
   ```
+
 3. Crear localmente una carpeta con el nombre de **cypress-training** y luego sitúese dentro de la carpeta.
-4. A continuación realice el primer commit y suba los cambios a nuestro repositorio remoto de github: 
+4. A continuación realice el primer commit y suba los cambios a nuestro repositorio remoto de github:
+
 ```bash
 echo "# cypress-training" >> README.md
 git init
@@ -18,19 +23,24 @@ git commit -m "first commit"
 git remote add origin https://github.com/<usuario>/cypress-training.git
 git push -u origin master
 ```
-5. Proteger la rama `master` para que los pull request requieran revisión de otros desarrolladores y se compruebe el estado de nuestros test ("ok" :heavy_check_mark: o "fallaron" :x:) antes de hacer un merge a la rama. 
+
+5. Proteger la rama `master` para que los pull request requieran revisión de otros desarrolladores y se compruebe el estado de nuestros test ("ok" :heavy_check_mark: o "fallaron" :x:) antes de hacer un merge a la rama.
 Ir a Settings > Branches adicionamos una regla dando click en **add rule**. Escribimos `master` en el campo de **branch name pattern**. Una vez hecho eso, damos click en las siguientes opciones:
 ![branch rules](https://github.com/AgileTestingColombia/cypress-training/blob/media/images/branch-rules.png).
 6. Añadir como colaboradores a:
+
 * [leonleo997](https://github.com/leonleo997)
 * [renardete](https://github.com/renardete)
 * [jcruze](https://github.com/jcruze)
+
 7. Instalar la versión `v10.15.3` de NodeJS. Nota: Recomendamos usar [nvm](https://github.com/nvm-sh/nvm) como manejador de versiones.
 8. Crear una nueva rama local ejecutando por consola `git checkout -b setup`.
 9. Crear una carpeta en la raíz del proyecto llamada **.github** con un archivo llamado **CODEOWNERS** (sin extensión) con lo siguiente:
+
 ```js
 * @leonleo997 @renardete @jcruze
 ```
+
 10. Ejecutar en consola `npm init` y colocar la siguiente información:
 
    | Parámetro          | Valor                                         |
@@ -44,6 +54,7 @@ Ir a Settings > Branches adicionamos una regla dando click en **add rule**. Escr
    | **Keywords**       | ui-testing, dojo, practice, cypress           |
    | **Author**         | _[Su nombre]_ <_[Su correo]_> (_[su github]_) |
    | **License**        | MIT                                           |
+
 11. Realizar un commit donde incluya los archivos creados con el mensaje “setup project configuration” y subir los cambios al repositorio:
 
     ```bash
@@ -54,17 +65,22 @@ Ir a Settings > Branches adicionamos una regla dando click en **add rule**. Escr
 
 12. Crear un pull request (PR), asignarle los revisores y esperar la aprobación o comentarios de mejora (en este caso deberá hacer los ajustes requeridos, subir los cambios y esperar nuevamente la aprobación) de los revisores . Si no sabe cómo realizarlo, le recomendamos leer el siguiente artículo [instrucciones](https://help.github.com/articles/creating-a-pull-request/).
 13. Una vez hemos obtenido la aprobación de los revisores, realizar el merge a master seleccionando la opción “squash and merge” (squash te permite unir todos los commits en un solo, es más por un concepto de organización). Posteriormente, en su rama local 'master' realice el pull para traer los cambios mergeados en el PR.
+
     ```bash
     git checkout master
     git pull
     ```
 
 ## 2. Instalación de Cypress
+
 1. Ejecutar el siguiente comando:
+
 ```
 npm install -D cypress  
 ```
+
 2. Observar que se crea una carpeta llamada **cypress** con la siguiente [estructura](https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests.html#Folder-Structure):
+
 ```
 /cypress
   /fixtures
@@ -99,7 +115,9 @@ npm install -D cypress
     - commands.js
     - index.js
 ```
-3. Añadir en el archivo `package.json` la propiedad: `"test": "cypress open"`, dentro de `scripts`,  ésto hará que el comando `test` ejecute la instrucción `cypress open`. 
+
+3. Añadir en el archivo `package.json` la propiedad: `"test": "cypress open"`, dentro de `scripts`,  ésto hará que el comando `test` ejecute la instrucción `cypress open`.
+
 ```javascript
 ...
 "scripts": {
@@ -107,11 +125,15 @@ npm install -D cypress
   },
 ...
 ```
+
 4. Presionar el botón `Run all specs` para ejecutar todas las pruebas de ejemplo. Es aquí donde vemos cómo funciona la magia de cypress. Una vez finalice, cerramos la ventana de cypress.
 
 ## 3. Creando la primera prueba
+
 Una vez hemos ejecutado las pruebas de ejemplo, eliminamos la carpeta `examples` que está dentro de la carpeta `integration`.  
+
 1. Creamos un archivo llamado `google.spec.js` dentro de la carpeta `/cypress/integration/` con el siguiente contenido:  
+
 ```javascript
 describe('This is my first cypress test', () => {
     it('should have a title', () => {
@@ -120,16 +142,20 @@ describe('This is my first cypress test', () => {
     });
 });
 ```
+
 2. Ejecutar el comando `npm test` para correr la prueba. Una vez finalice y si todo está bien veremos que la prueba se puso en verde:  
 ![google spec result](https://github.com/AgileTestingColombia/cypress-training/blob/media/images/google-spec.png).
 
-
 ### 4. Configurando las pruebas con Typescript
+
 1. Instalar las dependencias necesarias para la transpilación de nuestras pruebas escritas en Typescript a Javascript por medio de webpack y un preprocesador de cypress para Typescript.
+
   ```bash
   npm i -D webpack @cypress/webpack-preprocessor ts-loader typescript
   ```
+
 2. Crear el archivo tsconfig.json en la raiz del proyecto y copiar dentro de este la siguiente configuración:
+
 ```javascript
 {
     "compilerOptions": {
@@ -149,7 +175,9 @@ describe('This is my first cypress test', () => {
     ]
 }
 ```
-3. Posteriormente, crear el archivo de configuración de webpack `webpack.config.js` en la raiz del proyecto y agregar las siguientes lineas para realizar la transpilación de nuestros archivos `.ts` excluyendo las dependencias instaladas en `node_modules`: 
+
+3. Posteriormente, crear el archivo de configuración de webpack `webpack.config.js` en la raiz del proyecto y agregar las siguientes lineas para realizar la transpilación de nuestros archivos `.ts` excluyendo las dependencias instaladas en `node_modules`:
+
 ```javascript
 module.exports = {
     mode: 'development',
@@ -176,7 +204,9 @@ module.exports = {
     },
   }
 ```
+
 4. Para cargar el plugin del preprocesador en cypress e iniciar la transpilación al correr las pruebas agregamos las siguientes lineas en el archivo `cypress/plugins/index.js`
+
 ```javascript
 /// <reference types="cypress" />
 
@@ -195,22 +225,29 @@ module.exports = (on, config) => {
 ```
 
 5. Cambiar la extensión de nuestra prueba `google.spec.js` por `google.spec.ts`y ejecutar el comando de pruebas para comprobar que la transpilación se ejecuta correctamente al correr las pruebas
+
 ```bash
 npm test
 ```
 
 ### 5. Análisis de código estatico
+
 1. Para realizar el análisis de código estatico usaremos la herramienta EsLint para validar un conjunto de reglas sobre el código de pruebas y mantener un estilo consistente. Para esto se debe instalar Eslint como dependecia de desarrollo, luego iniciar la configuración del linter y seguimos los pasos que aparecen en consola (ver gif):
+
 ```bash
 npm install eslint --save-dev
 npx eslint --init
 ```
+
 ![google spec result](https://github.com/AgileTestingColombia/cypress-training/blob/media/images/eslint-init.gif).
 2. Instalar una extension del linter para cypress que contiene reglas de estilo siguiendo las buenas practicas que sugiere cypress:
+
 ```bash
 npm install eslint-plugin-cypress --save-dev
 ```
+
 3. Luego agregar el plugin de cypress y las reglas en el archivo eslintrc.js
+
 ```javascript
 ...
     "plugins": [
@@ -226,7 +263,9 @@ npm install eslint-plugin-cypress --save-dev
     }
 ...
 ```
+
 4. Posteriormente modificamos el script test en el "package.json" para ejecutar la verificación de código estático antes de correr las pruebas:
+
 ```json
 "scripts": {
     "test": "npm run lint && cypress open",
@@ -234,7 +273,9 @@ npm install eslint-plugin-cypress --save-dev
     "lint:fix": "npm run lint -- --fix"
 },
 ```
+
 5. Ejecutamos las pruebas por corriendo el comando test
+
 ```bash
 npm test
 ```
@@ -242,9 +283,11 @@ npm test
 Nota: En caso de tener errores, algunos de ellos son posible arreglarlos autoáticamente añadiendo el argumento --fix, es decir, usamos `npm run lint -- --fix`.
 
 ### 6. Configurar Integración Continua (CI)
+
 En esta sección se configura la integración continua por medio de Travis, lo cual nos permitirá correr nuestras pruebas en un servidor remoto y validar continuamente que los cambios que vamos a ingresar a nuestra aplicación no han afectado el funcionamiento correcto.
 
 1. Inicialmente crear el siguiente script en el package.json para ejecutar todas las pruebas de cypress/integration/ sin tener que levantar el explorador. A esto le llamamos headless mode:
+
 ```javascript
 "scripts": {
     ...
@@ -254,11 +297,13 @@ En esta sección se configura la integración continua por medio de Travis, lo c
 ```
 
 2. Luego crear el archivo `.nvmrc` para indicarle al CI que versión de nodeJS debe usar para instalar la aplicación y correr las pruebas. Ingresar la versión de node en el archivo.
+
 ```text
 v10.16.0
 ```
 
 3. Para indicar la configuración de Travis se debe crear el archivo `.travis.yml` e ingresar la siguiente especificación:
+
 ```yml
 language: node_js
 
@@ -273,9 +318,11 @@ script:
   - npm run cypress:run
   
 ```
+
 *Nota: Se agrega el script `npm run cypress:run` para ejecutar todas las pruebas, de lo contrario se correria `npm test` por default*
 
 4. Debido a que cypress por default graba videos de la ejecución de las pruebas es util desactivar esta funcionalidad para disminuir el tiempo de ejecución y el uso de recursos en el servidor del CI. Para esto se debe ingresar la siguiente configuración en el archivo `cypress.json`
+
 ```json
 {
   ...
@@ -283,17 +330,19 @@ script:
   ...
 }
 ```
+
 5. Finalmente subir los cambios al repositorio y crear un Pull Request. Se ejecutaran las pruebas en el servidor que provee Travis y se mostrara los resultados de la ejecución en el PR.
 
 ### 7. Selectores CSS
 
-En esta sección se realiza un flujo para comprar una camiseta en la tienda de ropa: http://automationpractice.com/, vamos a usar los css selector para interactuar con cada elemento del DOM.
+En esta sección se realiza un flujo para comprar una camiseta en la tienda de ropa: <http://automationpractice.com/>, vamos a usar los css selector para interactuar con cada elemento del DOM.
 
-:scroll: Un poco de teoria: Para interactuar con los elementos del DOM se pueden usar varios mecanismos como CSS selectors, XPATH, jquery+css. Cada uno de estos tiene diferentes beneficios como su performance, legibilidad o la complejidad de la query del elemento con el cual queremos interactuar. Usualmente los CSS selector suelen ser mas rapidos y confiables en la mayoria de navegadores sin embargo lo XPATH permiten realizar busquedas de elementos mas complejas. Te recomendamos investigar las diferencias entre ambos tipos de selectores teniendo en cuenta factores como: manteniblidad, flexiblidad y velocidad de busqueda de un elemento. 
+:scroll: Un poco de teoria: Para interactuar con los elementos del DOM se pueden usar varios mecanismos como CSS selectors, XPATH, jquery+css. Cada uno de estos tiene diferentes beneficios como su performance, legibilidad o la complejidad de la query del elemento con el cual queremos interactuar. Usualmente los CSS selector suelen ser mas rapidos y confiables en la mayoria de navegadores sin embargo lo XPATH permiten realizar busquedas de elementos mas complejas. Te recomendamos investigar las diferencias entre ambos tipos de selectores teniendo en cuenta factores como: manteniblidad, flexiblidad y velocidad de busqueda de un elemento.
 
 Vamos a realizar los siguientes pasos, para automatizar el flujo de compra:
 
 1. Primero crear el archivo `buy-shirt.spec.ts` e incluir el siguiente codigo:
+
 ```typescript
 
 describe('Buy a t-shirt', () => {
@@ -315,11 +364,13 @@ describe('Buy a t-shirt', () => {
   });
 });
 ```
+
 Usa como apoyo el gif para conocer mas del flujo esperado, extrae los css selector de la UI manualmente, termina la prueba y correla local.  
 
 ![google spec result](https://github.com/AgileTestingColombia/cypress-training/blob/media/images/test-flow-buy-shirt.gif)  
 
-3. En algunos la red u otros factores externos a la prueba pueden afectar los tiempos de espera, en el archivo de configuración de cypress `cypress.json` agrega los siguientes atributos y modificalos hasta que las pruebas pasen: 
+3. En algunos la red u otros factores externos a la prueba pueden afectar los tiempos de espera, en el archivo de configuración de cypress `cypress.json` agrega los siguientes atributos y modificalos hasta que las pruebas pasen:
+
 ```json
 {
   ...
@@ -338,7 +389,6 @@ Page Object Model es un patron para mejorar la mantenibilidad de las pruebas ya 
 A continuación realizar la transformación a POM, por medio de los siguientes pasos:
 
 1. Crear el archivo `cypress/page/menu-content.page.ts` y agregar el siguiente código:
-
 
 ```javascript
 class MenuContentPage {
@@ -422,7 +472,7 @@ En algunos escenarios debemos trabajar con lista de elementos, realizar busqueda
 
 ### 11. AAA pattern
 
-Un patrón común para escribir pruebas es el patrón AAA que nos ayuda a definir una estructura ordenada de cada prueba, por medio de 3 pasos: 
+Un patrón común para escribir pruebas es el patrón AAA que nos ayuda a definir una estructura ordenada de cada prueba, por medio de 3 pasos:
 
 * **Arrange**: Preparar las condiciones necesarias para ejecutar la prueba, ej: Datos de la prueba, carga de pagina donde se ejecuta la prueba.
 * **Action**: Es la acción del usuario que realmente vamos a probar, Ej: llenar formularios, navegar a otra pagina, hacer clicks.
@@ -498,12 +548,12 @@ describe('the user navigates to the dresses page should', () => {
 
 5. Verifica que las pruebas corran bien, crea un PR y solicita la revisión.
 
-
 ### 12. Mejorando los reportes - Mochawesome
 
 Algunas veces es bueno mejorar el reporte visual de la ejecución de nuestras pruebas, para eso agregaremos `mochawesome` y lo integraremos con cypress. Siga los siguientes pasos:
 
 1. Instalaremos las siguientes dependencias:
+
 ```bash
 npm install mocha --save-dev
 npm install mocha --save-dev
@@ -534,6 +584,8 @@ npm install mochawesome-report-generator --save-dev
 
 3. Agrega script en el `package.json` para limpiar la carpeta `cypress/reports`
 
+`tip:` Ten en cuenta que el servidor de CI corre en linux.
+
 4. Agrega estos sripts para procesar el reporte generado al ejecutar las pruebas:
 
 ```json
@@ -544,8 +596,9 @@ npm install mochawesome-report-generator --save-dev
 ```
 
 5. Invetiga los hooks **pre** y **post** de npm para ejecutar scripts antes y despues de las pruebas:
-- **pre:** Limpiar el la carpeta de reportes
-- **post:** ejecutar los scripts para procesar el reporte generado por la ejecución de pruebas.
+
+* **pre:** Limpiar el la carpeta de reportes
+* **post:** ejecutar los scripts para procesar el reporte generado por la ejecución de pruebas.
 
 6. agrega la carpeta de reportes al *.gitignore* para que no se suban los reportes.
 
