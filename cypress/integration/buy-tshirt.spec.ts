@@ -24,16 +24,22 @@ describe('The user navigates to the Shopping page', () => {
     paymentStepPage = new PaymentStepPage();
   })
 
-  it('then should be bought a t-shirt', () => {
+
+  it('Then completes the shopping process and verifies the confirmation order message', () => {
     menuContentPage.visitMenuContentPage()
     menuContentPage.goToTShirtMenu()
     productListPage.AddTShirtToCart('Faded Short Sleeve T-shirts')
     productListPage.proceedToCheckout()
+
     shoppingCartPage.clickProceedToCheckout()
+
     loginPage.login(userEmail, userPassword)
+
     addressStepPage.clickAddressProceedToCheckout()
+
     shippingStepPage.checkTermsOfService()
     shippingStepPage.clickShippingProceedToCheckout()
+
     paymentStepPage.clickPayByBankWire()
     paymentStepPage.clickConfirmOrder()
 
