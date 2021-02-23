@@ -7,7 +7,7 @@
     "lint": "eslint ./cypress/integration/**/*.ts",
     "lint:fix": "npm run lint -- --fix",
     "test:open": "cypress open",
-    "clean:reports": "rmdir /s /q cypress\\reports 2> nul && mkdir cypress\\reports && mkdir cypress\\reports\\mocha",
+    "clean:reports": "rm -rf cypress\\reports 2> nul && mkdir cypress\\reports && mkdir cypress\\reports\\mocha",
     "combine-reports": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/report.json",
     "generate-report": "marge cypress/reports/report.json -f report -o cypress/reports",
     "pretest": "npm run clean:reports",
