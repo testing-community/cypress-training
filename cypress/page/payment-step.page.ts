@@ -3,8 +3,8 @@ class PaymentStepPage{
   private confirmOrderButton: string
 
   constructor(){
-    this.payByBankWireButton = '#HOOK_PAYMENT > div:nth-child(1) > div > p > a'
-    this.confirmOrderButton = '#cart_navigation > button > span'
+    this.payByBankWireButton = '.bankwire'
+    this.confirmOrderButton = '#cart_navigation span'
   }
 
   public clickPayByBankWire(): void {

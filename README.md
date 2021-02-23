@@ -398,7 +398,15 @@ describe('Buy a t-shirt', () => {
 
 6. Cree un PR y solicitie revisión del punto anterior.
 
-### 9. AAA pattern
+### 9. Mejorando los selectores
+
+En esta sección presentaras una propuesta para los selectores que se estan usando para la pruebas:
+
+1. Realice su propia propuesta de los selectores de cada page object.
+2. Verificar que las pruebas pasen
+3. Crear un PR y solicitar revisión. El revisor comentará los selectores con los que no esta de acuerdo, en ese caso, justifique su propesta de selector. (No use **XPATH**)
+
+### 10. AAA pattern
 
 Un patrón común para escribir pruebas es el patrón AAA que nos ayuda a definir una estructura ordenada de cada prueba, por medio de 3 pasos: 
 
