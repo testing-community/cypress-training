@@ -3,7 +3,7 @@
 ## 1. Creación y configuración del proyecto
 
 1. Crear un repositorio en github con el nombre de **cypress-training** (previo requisito disponer de una cuenta en github).
-2. Crear el archivo **.gitignore** en la raíz del proyecto, luego ingrese a la página <https://www.gitignore.io/> y en el campo de texto digite su sistema operativo (ej: windows, osx, macos) y selecciónelo de la lista de autocompletar. Repita este paso para su entorno de desarrollo (ej:visualstudio, sublime, intellij, jetbrains), también agregue la palabra `node`. Presione el botón "Generate" para crear el archivo que contendrá una lista de carpetas y archivos de exclusión y copie su contenido dentro del archivo **.gitignore**. Por último, agregue al final de su archivo .gitignore las siguientes líneas para no subir los videos y capturas generadas en la ejecución de las pruebas:
+2. Crear el archivo **.gitignore** en la raíz del proyecto, luego ingrese a la página <https://www.toptal.com/developers/gitignore> y en el campo de texto digite su sistema operativo (ej: windows, osx, macos) y selecciónelo de la lista de autocompletar. Repita este paso para su entorno de desarrollo (ej:visualstudio, sublime, intellij, jetbrains), también agregue la palabra `node` y por ultimo `CypressIO`. Presione el botón "Generate" para crear el archivo que contendrá una lista de carpetas y archivos de exclusión y copie su contenido dentro del archivo **.gitignore**. Por último, agregue al final de su archivo .gitignore las siguientes líneas para no subir los videos y capturas generadas en la ejecución de las pruebas:
 
   ```
   ...
@@ -29,16 +29,16 @@ Ir a Settings > Branches adicionamos una regla dando click en **add rule**. Escr
 ![branch rules](https://github.com/AgileTestingColombia/cypress-training/blob/media/images/branch-rules.png).
 6. Añadir como colaboradores a:
 
-* [leonleo997](https://github.com/leonleo997)
+* [holgiosalos](https://github.com/holgiosalos)
+* [Valeryibarra](https://github.com/Valeryibarra)
 * [renardete](https://github.com/renardete)
-* [jcruze](https://github.com/jcruze)
 
-7. Instalar la versión `v10.15.3` de NodeJS. Nota: Recomendamos usar [nvm](https://github.com/nvm-sh/nvm) como manejador de versiones.
+7. Instalar la versión `v14.16.0` de NodeJS. Nota: Recomendamos usar [nvm](https://github.com/nvm-sh/nvm) como manejador de versiones.
 8. Crear una nueva rama local ejecutando por consola `git checkout -b setup`.
 9. Crear una carpeta en la raíz del proyecto llamada **.github** con un archivo llamado **CODEOWNERS** (sin extensión) con lo siguiente:
 
 ```js
-* @leonleo997 @renardete @jcruze
+* @renardete @holgiosalos @Valeryibarra
 ```
 
 10. Ejecutar en consola `npm init` y colocar la siguiente información:
@@ -600,6 +600,4 @@ npm install mochawesome-report-generator --save-dev
 * **pre:** Limpiar el la carpeta de reportes
 * **post:** ejecutar los scripts para procesar el reporte generado por la ejecución de pruebas.
 
-6. agrega la carpeta de reportes al *.gitignore* para que no se suban los reportes.
-
-7. Sube el cambio con una foto del reporte generado por ``mochawesome`, crea un PR y solicita la revisión.
+7. Sube el cambio con una foto del reporte generado por `mochawesome`, crea un PR y solicita la revisión.
