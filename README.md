@@ -600,4 +600,4 @@ npm install mochawesome-report-generator --save-dev
 * **pre:** Limpiar el la carpeta de reportes
 * **post:** ejecutar los scripts para procesar el reporte generado por la ejecución de pruebas.
 
-7. Sube el cambio con una foto del reporte generado por `mochawesome`, crea un PR y solicita la revisión.
+6. Sube el cambio con una foto del reporte generado por `mochawesome`, crea un PR y solicita la revisión.
