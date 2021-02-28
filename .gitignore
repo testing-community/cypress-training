@@ -510,4 +510,5 @@ build/Release
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 cypress/videos
 cypress/screenshots
+cypress/reports
 # End of https://www.gitignore.io/api/node,windows,visualstudio
