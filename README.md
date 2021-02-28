@@ -601,3 +601,31 @@ npm install mochawesome-report-generator --save-dev
 * **post:** ejecutar los scripts para procesar el reporte generado por la ejecución de pruebas.
 
 6. Sube el cambio con una foto del reporte generado por `mochawesome`, crea un PR y solicita la revisión.
+
+### 13. Filling form
+
+Usualmente nos encontramos que las aplicaciones que nos encontramos contienen formularios que los usuarios deben llenar. En esta sección interactuaremos con algunos de los componentes más comunes que nos podemos encontrar. La prueba consiste en:
+
+`tip:` Recuerda crear un page object e implementar la prueba con el patrón AAA
+
+1. Visitar la página: [Formulario de pruebas automatización](https://demoqa.com/automation-practice-form)
+2. Construir un método que llene el formulario y de click en el boton de **submit**:
+
+```javascript
+const personalInformation = {
+      name: 'Holmes',
+      lastName: 'Salazar',
+      email: 'hibarras@email.com',
+      gender: 'Male',
+      mobileNumber: '3656589156',
+      hobbies: ['Music', 'Reading'],
+      currentAddress: 'Av siempreViva # 123',
+    }
+personalFormPage.fillForm(personalInformation)
+```
+
+3. Verifique la data que ingreso en el el modal que se muestra al enviar el formulario
+
+`mini-challenge:` Agregue la interacción con el campo de State y City (puntos extra :100:)
+
+4. Verifique que las pruebas pasen, cree un PR y solicite la revision
