@@ -69,19 +69,18 @@ class PersonalFormPage {
     hobbies,
     location
     }: FillFormParam){
-
-    cy.get(this.nameText).type(name)
-      .get(this.lastNameText).type(lastName)
-      .get(this.emailText).type(email)
-      .get(this.mobileNumberText).type(mobileNumber)
-      .get(this.genderRadioBtn).filter(`[value="${gender}"]`).check({force: true})
-      .get(this.currentTextArea).type(currentAddress)
-      for(const hobby of hobbies){
-        cy.get(this.hobbiesCheck).filter(`[value="${hobby}"]`).check({force: true})
-      }
-      this.selectItem(this.stateSelect, location.state)
-      this.selectItem(this.citySelect, location.city)
-    cy.get(this.submitBtn).click()
+      cy.get(this.nameText).type(name)
+        .get(this.lastNameText).type(lastName)
+        .get(this.emailText).type(email)
+        .get(this.mobileNumberText).type(mobileNumber)
+        .get(this.genderRadioBtn).filter(`[value="${gender}"]`).check({force: true})
+        .get(this.currentTextArea).type(currentAddress)
+        for(const hobby of hobbies){
+          cy.get(this.hobbiesCheck).filter(`[value="${hobby}"]`).check({force: true})
+        }
+        this.selectItem(this.stateSelect, location.state)
+        this.selectItem(this.citySelect, location.city)
+      cy.get(this.submitBtn).click()
   }
 
   getModalTableValue(index: number){

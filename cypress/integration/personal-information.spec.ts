@@ -8,6 +8,7 @@ describe('The personal information page should', () => {
   before(() => {
     personalFormPage = new PersonalFormPage();
   })
+
   it('allow to fill personal information and submit then show the filled data in the modal', () => {
     const personalInformation = {
       name: 'Holmes',

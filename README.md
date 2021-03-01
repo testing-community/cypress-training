@@ -604,9 +604,13 @@ npm install mochawesome-report-generator --save-dev
 
 ### 13. Filling form
 
+<<<<<<< HEAD
+Usualmente en las aplicaciones nos encontramos contienen formularios que los usuarios deben llenar para guardar información. En esta sección interactuaremos con algunos de los componentes más comunes que nos podemos encontrar. La prueba consiste en:
+=======
 Usualmente nos encontramos que las aplicaciones que nos encontramos contienen formularios que los usuarios deben llenar. En esta sección interactuaremos con algunos de los componentes más comunes que nos podemos encontrar. La prueba consiste en:
 
 `tip:` Recuerda crear un page object e implementar la prueba con el patrón AAA
+>>>>>>> 376fe7770cb49283d2a8e80024046637a07b90b9
 
 1. Visitar la página: [Formulario de pruebas automatización](https://demoqa.com/automation-practice-form)
 2. Construir un método que llene el formulario y de click en el boton de **submit**:
@@ -624,8 +628,40 @@ const personalInformation = {
 personalFormPage.fillForm(personalInformation)
 ```
 
-3. Verifique la data que ingreso en el el modal que se muestra al enviar el formulario
+`tip:` Recuerda crear un page object e implementar la prueba con el patrón AAA
 
-`mini-challenge:` Agregue la interacción con el campo de State y City (puntos extra :100:)
+3. Verifique la data que ingreso en el modal que se muestra al enviar el formulario
 
-4. Verifique que las pruebas pasen, cree un PR y solicite la revision
+**mini-challenge:** Agregue la interacción con el campo de State y City y verifique el modal (puntos extra!! :100:)
+
+4. Verifique que las pruebas pasen, cree un PR y solicite la revisión.
+
+### 14. Interactuando con IFrames
+
+Los iframes son elementos html que nos podemos encontrar comunmente en aplicaciones web antiguas, pero es bueno saber como interactuar con ellos. En esta sección interactuaremos, navegaremos y verificaremos data dentro de un iframe.
+
+1. Primero instalaremos el siguiente plugin de cypress: [Cypress Iframe](https://www.npmjs.com/package/cypress-iframe). Sigue las instrucciones del link.
+
+2. Crea un page object `iframe.page.ts` que contenga los siguiente métodos:
+
+```javascript
+visit(){
+  // visit the test page: https://www.w3schools.com/html/html_iframe.asp
+}
+
+getFrameTitle(){
+  // get the title of the page in the iframe
+}
+
+goToCssPageInFrame(){
+  // navigate to the css page in the iframe
+}
+```
+
+3. Crea un archivo de pruebas llamado `iframe.spec.ts` y construye dos pruebas:
+
+* Cuando un usuario navega a la pagina: [pagina iframe](https://www.w3schools.com/html/html_iframe.asp) se muestra un Iframe que tiene como titulo `HTML Tutorial`
+
+* Cuando un usuario navega a la pagina: [pagina iframe](https://www.w3schools.com/html/html_iframe.asp) se muestra un Iframe y cuando el usuario navega a la pagina de CSS al darle click en la barra de navegación, se carga la pagina de CSS dentro del IFrame con el titulo `CSS Tutorial`
+
+4. Verifica que las pruebas pasen, crea un PR y solicita la revisión.
