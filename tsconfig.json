@@ -5,7 +5,8 @@
         "skipLibCheck": true,
         "strict": true,
         "types": [
-            "cypress"
+            "cypress",
+            "cypress-file-upload"
         ]
     },
     "include": [

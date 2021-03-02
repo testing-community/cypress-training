@@ -607,10 +607,14 @@ npm install mochawesome-report-generator --save-dev
 <<<<<<< HEAD
 Usualmente en las aplicaciones nos encontramos contienen formularios que los usuarios deben llenar para guardar información. En esta sección interactuaremos con algunos de los componentes más comunes que nos podemos encontrar. La prueba consiste en:
 =======
+<<<<<<< HEAD
+Usualmente en las aplicaciones nos encontramos contienen formularios que los usuarios deben llenar para guardar información. En esta sección interactuaremos con algunos de los componentes más comunes que nos podemos encontrar. La prueba consiste en:
+=======
 Usualmente nos encontramos que las aplicaciones que nos encontramos contienen formularios que los usuarios deben llenar. En esta sección interactuaremos con algunos de los componentes más comunes que nos podemos encontrar. La prueba consiste en:
 
 `tip:` Recuerda crear un page object e implementar la prueba con el patrón AAA
 >>>>>>> 376fe7770cb49283d2a8e80024046637a07b90b9
+>>>>>>> 83f3aad2ab111dc9c5b82d26dfdbf14e4209714c
 
 1. Visitar la página: [Formulario de pruebas automatización](https://demoqa.com/automation-practice-form)
 2. Construir un método que llene el formulario y de click en el boton de **submit**:
@@ -665,3 +669,21 @@ goToCssPageInFrame(){
 * Cuando un usuario navega a la pagina: [pagina iframe](https://www.w3schools.com/html/html_iframe.asp) se muestra un Iframe y cuando el usuario navega a la pagina de CSS al darle click en la barra de navegación, se carga la pagina de CSS dentro del IFrame con el titulo `CSS Tutorial`
 
 4. Verifica que las pruebas pasen, crea un PR y solicita la revisión.
+
+### 15. Subiendo archivo
+
+Usualmente nos podemos encontrar con la necesidad de subir archivos por medio de nuestra aplicación web. Realizaremos los siguiente:
+
+1. Instalar el plugin de cypress para subir archivos: [cypress-file-upload](https://www.npmjs.com/package/cypress-file-upload). Sigue las instrucciones de configuración.
+
+2. Crea el archivo `upload.page.ts` que contenga tres metodos:
+
+* visitar la página de pruebas de subida de archivos: [upload-demo-site](http://demo.automationtesting.in/FileUpload.html)
+* Subir un archivo. Recibe como parametro el nombre del archivo almacenado en la carpeta: `cypress/fixtures`
+* Obtener el elemento del titulo que contiene el nombre despues de subir
+
+3. Crea el archivo de pruebas `upload-download.spec.ts` y agrega una prueba para subir un archivo usando el page object creado anteriormente. Recuerda estructurar tu prueba con el pátron AAA.
+
+`tip:` El patrón AAA es solo para ayudarnos a tener mas orden al diseñar y contruir nuestras pruebas.
+
+4. Verifica que las pruebas pasen, crea un PR y solicita revisión.
