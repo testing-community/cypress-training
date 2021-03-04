@@ -604,17 +604,9 @@ npm install mochawesome-report-generator --save-dev
 
 ### 13. Filling form
 
-<<<<<<< HEAD
-Usualmente en las aplicaciones nos encontramos contienen formularios que los usuarios deben llenar para guardar información. En esta sección interactuaremos con algunos de los componentes más comunes que nos podemos encontrar. La prueba consiste en:
-=======
-<<<<<<< HEAD
-Usualmente en las aplicaciones nos encontramos contienen formularios que los usuarios deben llenar para guardar información. En esta sección interactuaremos con algunos de los componentes más comunes que nos podemos encontrar. La prueba consiste en:
-=======
-Usualmente nos encontramos que las aplicaciones que nos encontramos contienen formularios que los usuarios deben llenar. En esta sección interactuaremos con algunos de los componentes más comunes que nos podemos encontrar. La prueba consiste en:
+Usualmente en las aplicaciones nos encontramos formularios que los usuarios deben llenar para guardar información. En esta sección interactuaremos con algunos de los componentes más comunes que nos podemos encontrar. La prueba consiste en:
 
 `tip:` Recuerda crear un page object e implementar la prueba con el patrón AAA
->>>>>>> 376fe7770cb49283d2a8e80024046637a07b90b9
->>>>>>> 83f3aad2ab111dc9c5b82d26dfdbf14e4209714c
 
 1. Visitar la página: [Formulario de pruebas automatización](https://demoqa.com/automation-practice-form)
 2. Construir un método que llene el formulario y de click en el boton de **submit**:
