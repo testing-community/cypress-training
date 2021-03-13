@@ -1,5 +1,23 @@
 # Workshop Cypress
 
+## Tabla de contenidos
+[1. Creación y configuración del proyecto](#1-creación-y-configuración-del-proyecto)  
+[2. Instalación de Cypress](#2-instalación-de-cypress)  
+[3. Creando la primera prueba](#3-creando-la-primera-prueba)  
+[4. Configurando las pruebas con Typescript](#4-configurando-las-pruebas-con-typescript)  
+[5. Análisis de código estatico](#5-análisis-de-código-estatico)  
+[6. Configurar Integración Continua (CI)](#6-configurar-integración-continua-ci)  
+[7. Selectores CSS](#7-selectores-css)  
+[8. Page Object Model (POM)](#8-page-object-model-po)  
+[9. Mejorando los selectores](#9-mejorando-los-selectores)  
+[10. AAA pattern](#10-aaa-pattern)  
+[11. Listas de elementos, filtros y elementos dentro de elementos](#11-listas-de-elementos-filtros-y-elementos-dentro-de-elementos)  
+[12. Mejorando los reportes - Mochawesome](#12-mejorando-los-reportes---mochawesome)  
+[13. Filling form](#13-filling-form)  
+[14. Interactuando con IFrames](#14-interactuando-con-iframes)  
+[15. Subiendo archivo](#15-subiendo-un-archivo)  
+[16. Descargando un archivo](#16-descargando-un-archivo)  
+
 ## 1. Creación y configuración del proyecto
 
 1. Crear un repositorio en github con el nombre de **cypress-training** (previo requisito disponer de una cuenta en github).
@@ -146,7 +164,7 @@ describe('This is my first cypress test', () => {
 2. Ejecutar el comando `npm test` para correr la prueba. Una vez finalice y si todo está bien veremos que la prueba se puso en verde:  
 ![google spec result](https://github.com/AgileTestingColombia/cypress-training/blob/media/images/google-spec.png).
 
-### 4. Configurando las pruebas con Typescript
+## 4. Configurando las pruebas con Typescript
 
 1. Instalar las dependencias necesarias para la transpilación de nuestras pruebas escritas en Typescript a Javascript por medio de webpack y un preprocesador de cypress para Typescript.
 
@@ -230,7 +248,7 @@ module.exports = (on, config) => {
 npm test
 ```
 
-### 5. Análisis de código estatico
+## 5. Análisis de código estatico
 
 1. Para realizar el análisis de código estatico usaremos la herramienta EsLint para validar un conjunto de reglas sobre el código de pruebas y mantener un estilo consistente. Para esto se debe instalar Eslint como dependecia de desarrollo, luego iniciar la configuración del linter y seguimos los pasos que aparecen en consola (ver gif):
 
@@ -282,7 +300,7 @@ npm run test:open
 
 Nota: En caso de tener errores, algunos de ellos son posible arreglarlos autoáticamente añadiendo el argumento --fix, es decir, usamos `npm run lint -- --fix`.
 
-### 6. Configurar Integración Continua (CI)
+## 6. Configurar Integración Continua (CI)
 
 En esta sección se configura la integración continua por medio de Travis, lo cual nos permitirá correr nuestras pruebas en un servidor remoto y validar continuamente que los cambios que vamos a ingresar a nuestra aplicación no han afectado el funcionamiento correcto.
 
@@ -333,7 +351,7 @@ script:
 
 5. Finalmente subir los cambios al repositorio y crear un Pull Request. Se ejecutaran las pruebas en el servidor que provee Travis y se mostrara los resultados de la ejecución en el PR.
 
-### 7. Selectores CSS
+## 7. Selectores CSS
 
 En esta sección se realiza un flujo para comprar una camiseta en la tienda de ropa: <http://automationpractice.com/>, vamos a usar los css selector para interactuar con cada elemento del DOM.
 
@@ -382,7 +400,7 @@ Usa como apoyo el gif para conocer mas del flujo esperado, extrae los css select
 
 4. Para finalizar sube tus cambios al repositorio y crea un PR.
 
-### 8. Page Object Model (POM)  
+## 8. Page Object Model (POM)  
 
 Page Object Model es un patron para mejorar la mantenibilidad de las pruebas ya que podemos establecer una capa intermedia entre las pruebas y UI de la aplicación, ya que los cambios que requieran las pruebas debido a cambios en la aplicación se pueden realizar rapidamente en el POM. Te recomendamos investigar el patrón y otros patrones utiles que puedan ser usados para el código de pruebas.  
 
@@ -448,7 +466,7 @@ describe('Buy a t-shirt', () => {
 
 6. Cree un PR y solicitie revisión del punto anterior.
 
-### 9. Mejorando los selectores
+## 9. Mejorando los selectores
 
 En esta sección presentaras una propuesta para los selectores que se estan usando para la pruebas:
 
@@ -456,7 +474,7 @@ En esta sección presentaras una propuesta para los selectores que se estan usan
 2. Verificar que las pruebas pasen
 3. Crear un PR y solicitar revisión. El revisor comentará los selectores con los que no esta de acuerdo, en ese caso, justifique su propesta de selector. (No use **XPATH**)
 
-### 10. AAA pattern
+## 10. AAA pattern
 
 Un patrón común para escribir pruebas es el patrón AAA que nos ayuda a definir una estructura ordenada de cada prueba, por medio de 3 pasos:
 
@@ -534,7 +552,7 @@ describe('the user navigates to the dresses page should', () => {
 
 5. Verifica que las pruebas corran bien, crea un PR y solicita la revisión.
 
-### 11. Listas de elementos, filtros y elementos dentro de elementos
+## 11. Listas de elementos, filtros y elementos dentro de elementos
 
 En algunos escenarios debemos trabajar con lista de elementos, realizar busquedas sobre locator anidados o realizar acciones sobre elementos hijos del selector que tenemos disponible.
 
@@ -548,7 +566,7 @@ En algunos escenarios debemos trabajar con lista de elementos, realizar busqueda
 
 5. Sube la rama, crea un pull request y solicita la revisión del cambio
 
-### 12. Mejorando los reportes - Mochawesome
+## 12. Mejorando los reportes - Mochawesome
 
 Algunas veces es bueno mejorar el reporte visual de la ejecución de nuestras pruebas, para eso agregaremos `mochawesome` y lo integraremos con cypress. Siga los siguientes pasos:
 
@@ -602,7 +620,7 @@ npm install mochawesome-report-generator --save-dev
 
 6. Sube el cambio con una foto del reporte generado por `mochawesome`, crea un PR y solicita la revisión.
 
-### 13. Filling form
+## 13. Filling form
 
 Usualmente en las aplicaciones nos encontramos formularios que los usuarios deben llenar para guardar información. En esta sección interactuaremos con algunos de los componentes más comunes que nos podemos encontrar. La prueba consiste en:
 
@@ -632,7 +650,7 @@ personalFormPage.fillForm(personalInformation)
 
 4. Verifique que las pruebas pasen, cree un PR y solicite la revisión.
 
-### 14. Interactuando con IFrames
+## 14. Interactuando con IFrames
 
 Los iframes son elementos html que nos podemos encontrar comunmente en aplicaciones web antiguas, pero es bueno saber como interactuar con ellos. En esta sección interactuaremos, navegaremos y verificaremos data dentro de un iframe.
 
@@ -662,7 +680,7 @@ goToCssPageInFrame(){
 
 4. Verifica que las pruebas pasen, crea un PR y solicita la revisión.
 
-### 15. Subiendo un archivo
+## 15. Subiendo un archivo
 
 Usualmente nos podemos encontrar con la necesidad de subir archivos por medio de nuestra aplicación web. Realizaremos los siguiente:
 
@@ -680,7 +698,11 @@ Usualmente nos podemos encontrar con la necesidad de subir archivos por medio de
 
 4. Verifica que las pruebas pasen, crea un PR y solicita revisión.
 
+<<<<<<< HEAD
+## 16. Descargando un archivo
+=======
 ### 16. Descargando un archivo
+>>>>>>> 74c0e5646ae0fede02937643d8419d25d08bbf57
 
 Para esta sección descargaremos un archivo y verificaremos el contenido, realizaremos la siguiente prueba:
 
