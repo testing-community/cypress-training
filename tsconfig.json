@@ -6,7 +6,8 @@
         "strict": true,
         "types": [
             "cypress",
-            "cypress-file-upload"
+            "cypress-file-upload",
+            "node"
         ]
     },
     "include": [

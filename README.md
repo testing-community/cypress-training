@@ -662,7 +662,7 @@ goToCssPageInFrame(){
 
 4. Verifica que las pruebas pasen, crea un PR y solicita la revisión.
 
-### 15. Subiendo archivo
+### 15. Subiendo un archivo
 
 Usualmente nos podemos encontrar con la necesidad de subir archivos por medio de nuestra aplicación web. Realizaremos los siguiente:
 
@@ -679,3 +679,19 @@ Usualmente nos podemos encontrar con la necesidad de subir archivos por medio de
 `tip:` El patrón AAA es solo para ayudarnos a tener mas orden al diseñar y contruir nuestras pruebas.
 
 4. Verifica que las pruebas pasen, crea un PR y solicita revisión.
+
+### 16. Descargando un archivo
+
+Para esta sección descargaremos un archivo y verificaremos el contenido, realizaremos la siguiente prueba:
+
+1. Construye la siguiente prueba en el archivo `upload-download.spec.ts`:
+
+* Visita la página: [download-demo-site](http://demo.automationtesting.in/FileDownload.html)
+* Genera un archivo con data ingresada en la prueba automática y descargalo.
+* Verifica que el archivo descargado tenga el contenido que ingresaste en la prueba.
+
+2. Crea el archivo `download.page.ts` con los método necesarios para construir la prueba automatica.
+
+3. Verifica que todas las pruebas pasen, además incluye los archivos que no se deben subir al `.gitignore`.
+
+4. Crea un PR y solicita revisión.

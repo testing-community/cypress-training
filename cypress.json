@@ -2,6 +2,9 @@
   "video": false,
   "defaultCommandTimeout": 20000,
   "responseTimeout": 20000,
+  "downloadsFolder": "cypress/downloads",
+  "trashAssetsBeforeRuns": true,
+  "chromeWebSecurity": false,
   "reporter": "cypress-multi-reporters",
     "reporterOptions": {
         "reporterEnabled": "mochawesome",
