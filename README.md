@@ -29,9 +29,9 @@ Ten en cuenta tener estudiados ciertos conceptos importantes (te dejamos unos en
 [11. Listas de elementos, filtros y elementos dentro de elementos](#11-listas-de-elementos-filtros-y-elementos-dentro-de-elementos)  
 [12. Mejorando los reportes - Mochawesome](#12-mejorando-los-reportes---mochawesome)  
 [13. Filling form](#13-filling-form)  
-[14. Interactuando con IFrames](#14-interactuando-con-iframes)  
-[15. Subiendo archivo](#15-subiendo-un-archivo)  
-[16. Descargando un archivo](#16-descargando-un-archivo)  
+[14. Subiendo archivo](#14-subiendo-un-archivo)  
+[15. Descargando un archivo](#15-descargando-un-archivo)  
+[16. Interactuando con IFrames](#16-interactuando-con-iframes)  
 
 ## 1. Creación y configuración del proyecto
 
@@ -665,7 +665,41 @@ personalFormPage.fillForm(personalInformation)
 
 4. Verifique que las pruebas pasen, cree un PR y solicite la revisión.
 
-## 14. Interactuando con IFrames
+## 14. Subiendo un archivo
+
+Usualmente nos podemos encontrar con la necesidad de subir archivos por medio de nuestra aplicación web. Realizaremos los siguiente:
+
+1. Instalar el plugin de cypress para subir archivos: [cypress-file-upload](https://www.npmjs.com/package/cypress-file-upload). Sigue las instrucciones de configuración.
+
+2. Crea el archivo `upload.page.ts` que contenga tres metodos:
+
+* visitar la página de pruebas de subida de archivos: [upload-demo-site](http://demo.automationtesting.in/FileUpload.html)
+* Subir un archivo. Recibe como parametro el nombre del archivo almacenado en la carpeta: `cypress/fixtures`
+* Obtener el elemento del titulo que contiene el nombre despues de subir
+
+3. Crea el archivo de pruebas `upload-download.spec.ts` y agrega una prueba para subir un archivo usando el page object creado anteriormente. Recuerda estructurar tu prueba con el pátron AAA.
+
+`tip:` El patrón AAA es solo para ayudarnos a tener mas orden al diseñar y contruir nuestras pruebas.
+
+4. Verifica que las pruebas pasen, crea un PR y solicita revisión.
+
+## 15. Descargando un archivo
+
+Para esta sección descargaremos un archivo y verificaremos el contenido, realizaremos la siguiente prueba:
+
+1. Construye la siguiente prueba en el archivo `upload-download.spec.ts`:
+
+* Visita la página: [download-demo-site](http://demo.automationtesting.in/FileDownload.html)
+* Genera un archivo con data ingresada en la prueba automática y descargalo.
+* Verifica que el archivo descargado tenga el contenido que ingresaste en la prueba.
+
+2. Crea el archivo `download.page.ts` con los método necesarios para construir la prueba automatica.
+
+3. Verifica que todas las pruebas pasen, además incluye los archivos que no se deben subir al `.gitignore`.
+
+4. Crea un PR y solicita revisión.
+
+## 16. Interactuando con IFrames
 
 Los iframes son elementos html que nos podemos encontrar comunmente en aplicaciones web antiguas, pero es bueno saber como interactuar con ellos. En esta sección interactuaremos, navegaremos y verificaremos data dentro de un iframe.
 
@@ -687,55 +721,15 @@ goToCssPageInFrame(){
 }
 ```
 
-3. Crea un archivo de pruebas llamado `iframe.spec.ts` y construye dos pruebas:
+3. Crea un archivo de pruebas llamado `iframe.spec.ts` y construye las siguientes pruebas:
 
 * Cuando un usuario navega a la pagina: [pagina iframe](https://www.w3schools.com/html/html_iframe.asp) se muestra un Iframe que tiene como titulo `HTML Tutorial`
 
-* Cuando un usuario navega a la pagina: [pagina iframe](https://www.w3schools.com/html/html_iframe.asp) se muestra un Iframe y cuando el usuario navega a la pagina de CSS al darle click en la barra de navegación, se carga la pagina de CSS dentro del IFrame con el titulo `CSS Tutorial`
+* **Optional:** Cuando un usuario navega a la pagina: [pagina iframe](https://www.w3schools.com/html/html_iframe.asp) se muestra un Iframe y cuando el usuario navega a la pagina de CSS al darle click en la barra de navegación, se carga la pagina de CSS dentro del IFrame con el titulo `CSS Tutorial`
+
+`Challenge:` algunas pruebas pueden ser inestables por diferentes factores como latencias. Implementa una estrategia de retrys si encuentras alguna inestabilidad!
 
 4. Verifica que las pruebas pasen, crea un PR y solicita la revisión.
-
-## 15. Subiendo un archivo
-
-Usualmente nos podemos encontrar con la necesidad de subir archivos por medio de nuestra aplicación web. Realizaremos los siguiente:
-
-1. Instalar el plugin de cypress para subir archivos: [cypress-file-upload](https://www.npmjs.com/package/cypress-file-upload). Sigue las instrucciones de configuración.
-
-2. Crea el archivo `upload.page.ts` que contenga tres metodos:
-
-* visitar la página de pruebas de subida de archivos: [upload-demo-site](http://demo.automationtesting.in/FileUpload.html)
-* Subir un archivo. Recibe como parametro el nombre del archivo almacenado en la carpeta: `cypress/fixtures`
-* Obtener el elemento del titulo que contiene el nombre despues de subir
-
-3. Crea el archivo de pruebas `upload-download.spec.ts` y agrega una prueba para subir un archivo usando el page object creado anteriormente. Recuerda estructurar tu prueba con el pátron AAA.
-
-`tip:` El patrón AAA es solo para ayudarnos a tener mas orden al diseñar y contruir nuestras pruebas.
-
-4. Verifica que las pruebas pasen, crea un PR y solicita revisión.
-
-<<<<<<< HEAD
-## 16. Descargando un archivo
-=======
-<<<<<<< HEAD
-## 16. Descargando un archivo
-=======
-### 16. Descargando un archivo
->>>>>>> 74c0e5646ae0fede02937643d8419d25d08bbf57
->>>>>>> 79c862f9fd80bb07f435b692e733427f4e608dfa
-
-Para esta sección descargaremos un archivo y verificaremos el contenido, realizaremos la siguiente prueba:
-
-1. Construye la siguiente prueba en el archivo `upload-download.spec.ts`:
-
-* Visita la página: [download-demo-site](http://demo.automationtesting.in/FileDownload.html)
-* Genera un archivo con data ingresada en la prueba automática y descargalo.
-* Verifica que el archivo descargado tenga el contenido que ingresaste en la prueba.
-
-2. Crea el archivo `download.page.ts` con los método necesarios para construir la prueba automatica.
-
-3. Verifica que todas las pruebas pasen, además incluye los archivos que no se deben subir al `.gitignore`.
-
-4. Crea un PR y solicita revisión.
 
 ## Conclusión
 
