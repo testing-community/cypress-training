@@ -1,5 +1,20 @@
 # Workshop Cypress
 
+Bienvenido al Workshop de Cypress!!! Durante el taller exploraremos los conocimientos necesarios para construir pruebas automaticas de la interfaz gráfica (GUI) usando Cypress. Durante el taller exploraremos la configuración de un proyecto desde cero, prepararlo para un proceso de integración continua por medio de Travis CI, interactuar con diferentes componentes web y mucho mas.
+
+Para el desarrollo del taller usaremos [Github](https://github.com/) y [Github Flow](https://guides.github.com/introduction/flow/) para realizar la entrega de cada ejercicio practico.
+
+Ten en cuenta tener estudiados ciertos conceptos importantes (te dejamos unos enlaces :sunglasses:):
+
+* [Git](https://www.freecodecamp.org/news/learn-the-basics-of-git-in-under-10-minutes-da548267cc91/)
+* [Javascript](https://javascript.info/)
+
+**Tips de Github Flow:**
+1. Para cada ejercicio crear una rama (Investiga: *gitflow naming conventions* )
+2. Crea un Pull Request por cada punto (**Recuerda las interacciones como comentarios en ingles**)
+3. Despues de que se recibe aprobación de cada punto se debe hacer merge de la rama, utilizando squash.
+4. Antes de empezar un nuevo punto se debe hacer pull de master/main para asegurarnos que tenemos los ultimos cambios del anterior punto.
+
 ## Tabla de contenidos
 [1. Creación y configuración del proyecto](#1-creación-y-configuración-del-proyecto)  
 [2. Instalación de Cypress](#2-instalación-de-cypress)  
@@ -701,8 +716,12 @@ Usualmente nos podemos encontrar con la necesidad de subir archivos por medio de
 <<<<<<< HEAD
 ## 16. Descargando un archivo
 =======
+<<<<<<< HEAD
+## 16. Descargando un archivo
+=======
 ### 16. Descargando un archivo
 >>>>>>> 74c0e5646ae0fede02937643d8419d25d08bbf57
+>>>>>>> 79c862f9fd80bb07f435b692e733427f4e608dfa
 
 Para esta sección descargaremos un archivo y verificaremos el contenido, realizaremos la siguiente prueba:
 
@@ -717,3 +736,17 @@ Para esta sección descargaremos un archivo y verificaremos el contenido, realiz
 3. Verifica que todas las pruebas pasen, además incluye los archivos que no se deben subir al `.gitignore`.
 
 4. Crea un PR y solicita revisión.
+
+## Conclusión
+
+Muchas gracias por haber participado del Workshop de Cypress!!!!! Esperamos que tengas nuevos conocimientos que impulsen tu carrera profesional.
+
+Te invitamos a seguir aprendiendo, y te dejamos unos temas para que investigues y sigas estudiando:
+
+* Component testing UI
+* End-to-End Testing API
+* Component Testing API
+* Mutatation Tests
+* Contract Tests
+
+Sigue aprendiendo! :smile: :book: 
